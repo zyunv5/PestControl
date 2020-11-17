@@ -1,0 +1,20 @@
+
+.disinfestation.data-v-49e73486 {
+		width: 100vw;
+		height: 100%;
+		position: relative;
+		overflow: scroll;
+		font-size: 0;
+}
+.disinfestation-bg.data-v-49e73486 {
+		width: 100%;
+		height: auto;
+}
+.disinfestation-button.data-v-49e73486{
+		width: 100%;
+		font-size: 0;
+}
+.disinfestation-button image.data-v-49e73486{
+		width: 100%;
+}
+

@@ -1,0 +1,37 @@
+
+.project{
+	width: 100%;
+	height: 100%;
+	font-size: 0;
+	background-color: rgb(234,234,234);
+	padding-top: 30rpx;
+}
+.project-list{
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	width: 80%;
+	height: calc(100% - 60rpx);
+	margin: 0 auto;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.project-list image:nth-child(1){
+	width:600rpx;
+	height: 80rpx;
+}
+.project-list image:nth-child(2),.project-list image:nth-child(3),.project-list image:nth-child(4){
+	width:600rpx;
+	height: 340rpx;
+}
+

@@ -5,21 +5,78 @@
 			"style": {
 				"navigationBarTitleText": "虫杀杀"
 			}
+		},
+		{
+			"path": "pages/self/self",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "pages/order/order",
+			"style": {
+				"navigationBarTitleText": "订单",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/appointment/appointment",
+			"style": {
+				"navigationBarTitleText": "预约",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/explain/explain",
+			"style": {
+				"navigationBarTitleText": "费用说明",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/projects/projects",
+			"style": {
+				"navigationBarTitleText": "主营项目",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/disinfestation/disinfestation",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
 		}
-	    ,{
-            "path" : "pages/order/index/index",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "虫杀杀",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#3cc51f",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "首页",
+			"iconPath": "static/index.png",
+			"selectedIconPath": "static/index.png"
+		}, {
+			"pagePath": "pages/self/self",
+			"text": "我的",
+			"iconPath": "static/self.png",
+			"selectedIconPath": "static/self.png"
+		}]
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "order", //模式名称
+				"path": "pages/order/order", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
 	}
 }

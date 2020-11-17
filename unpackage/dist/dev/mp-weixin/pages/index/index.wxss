@@ -1,0 +1,52 @@
+
+.content {
+	width: 100vw;
+	height: 100%;
+	position: relative;
+	overflow: scroll;
+	font-size: 0;
+}
+.content-bg {
+	width: 100%;
+	height: auto;
+}
+.content-list {
+	position: absolute;
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	top: 332rpx;
+	left: 0;
+	right: 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	        align-items: flex-start;
+}
+.content-list image {
+	width: 185rpx;
+	height: 185rpx;
+}
+.content-swiper {
+	position: absolute;
+	top: 540rpx;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 600rpx;
+	height: 344rpx;
+}
+.swiper-item image {
+	width: 600rpx;
+	height: 344rpx;
+}
+

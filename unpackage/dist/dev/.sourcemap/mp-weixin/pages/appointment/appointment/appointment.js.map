@@ -1,0 +1,1 @@
+{"version":3,"sources":["uni-app:///main.js"],"names":["createPage","Page"],"mappings":";;;;;;;;;;kDAAA;AACA;AACA,0H;AACAA,UAAU,CAACC,oBAAD,CAAV,C","file":"pages/appointment/appointment/appointment.js","sourcesContent":["import 'uni-pages';\nimport Vue from 'vue'\nimport Page from './pages/appointment/appointment/appointment.vue'\ncreatePage(Page)"],"sourceRoot":""}
