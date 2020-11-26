@@ -2,9 +2,9 @@
 	<view class="project">
 		<view class="project-list">
 			<image src="../../static/title.png" mode="widthFix"></image>
-			<image @click="goDisinfestation" src="../../static/project1.png" mode="widthFix"></image>
-			<image src="../../static/project2.png" mode="aspectFill"></image>
-			<image src="../../static/project3.png" mode="aspectFill"></image>
+			<image @click="goDisinfestation" src="https://statich.yidianzixun.com/public/file/1606288248012/project1.png" mode="widthFix"></image>
+			<image src="https://statich.yidianzixun.com/public/file/1606288248012/project2.png" mode="aspectFill"></image>
+			<image src="https://statich.yidianzixun.com/public/file/1606288248012/project3.png" mode="aspectFill"></image>
 		</view>
 	</view>
 </template>

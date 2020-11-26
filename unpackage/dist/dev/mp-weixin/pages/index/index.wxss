@@ -1,9 +1,22 @@
 
+.index {
+	width: 100vw;
+	height: 100vh;
+}
+.content-init {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: 99;
+}
+.content-init>image {
+	width: 100vw;
+	height: 100vh;
+}
 .content {
 	width: 100vw;
-	height: 100%;
+	height: 100vh;
 	position: relative;
-	overflow: scroll;
 	font-size: 0;
 }
 .content-bg {

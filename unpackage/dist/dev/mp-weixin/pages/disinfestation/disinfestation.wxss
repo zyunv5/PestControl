@@ -5,16 +5,19 @@
 		position: relative;
 		overflow: scroll;
 		font-size: 0;
+		padding-top: 20rpx;
+		background-color: rgb(234,234,234);
 }
 .disinfestation-bg.data-v-49e73486 {
 		width: 100%;
 		height: auto;
 }
 .disinfestation-button.data-v-49e73486{
+		position: absolute;
+		top: 3050rpx;
 		width: 100%;
+		height: 100rpx;
 		font-size: 0;
-}
-.disinfestation-button image.data-v-49e73486{
-		width: 100%;
+		z-index: 2;
 }
 

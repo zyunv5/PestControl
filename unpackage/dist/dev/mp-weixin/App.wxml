@@ -1,0 +1,1 @@
+<block wx:if="{{init}}"><view class="content-init"><image src="https://statich.yidianzixun.com/public/file/1606285599416/init.jpg" alt mode="widthFix"></image></view></block>

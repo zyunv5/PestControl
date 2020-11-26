@@ -6,7 +6,8 @@
     "pages/appointment/appointment",
     "pages/explain/explain",
     "pages/projects/projects",
-    "pages/disinfestation/disinfestation"
+    "pages/disinfestation/disinfestation",
+    "pages/neighbor/neighbor"
   ],
   "subPackages": [],
   "window": {
@@ -35,5 +36,6 @@
       }
     ]
   },
+  "permission": {},
   "usingComponents": {}
 }

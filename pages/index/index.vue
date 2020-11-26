@@ -1,35 +1,56 @@
 <template>
-	<scroll-view class="content" scroll-y>
-		<image class="content-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1605598295554/bg.jpg" mode="widthFix"></image>
-		<view class="content-list">
-			<image @click="goAppointment" src="../../static/b1.png" mode="aspectFit"></image>
-			<image @click="goExplain" src="../../static/b2.png" mode="aspectFit"></image>
-			<image @click="goProjects" src="../../static/b3.png" mode="aspectFit"></image>
+	<view class="index">
+		<view class="content-init" v-show="!initState">
+			<image src="https://statich.yidianzixun.com/public/file/1606285599416/init.jpg" alt="" mode="scaleToFill">
 		</view>
-		<swiper class="content-swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
-			<swiper-item>
-				<view class="swiper-item">
-					<image src="../../static/swiper1.png" mode="aspectFit"></image>
-				</view>
-			</swiper-item>
-			<swiper-item>
-				<view class="swiper-item">
-					<image src="../../static/swiper1.png" mode="aspectFit"></image>
-				</view>
-			</swiper-item>
-		</swiper>
-	</scroll-view>
+		<scroll-view class="content" v-show="initState" scroll-y>
+			<image class="content-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1605598295554/bg.jpg"
+			 mode="widthFix"></image>
+			<view class="content-list">
+				<image @click="goAppointment" src="https://statich.yidianzixun.com/public/file/1606286771148/p1.png" mode="aspectFit"></image>
+				<image @click="goExplain" src="https://statich.yidianzixun.com/public/file/1606286771148/p2.png" mode="aspectFit"></image>
+				<image @click="goProjects" src="https://statich.yidianzixun.com/public/file/1606286771148/p3.png" mode="aspectFit"></image>
+			</view>
+			<swiper class="content-swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+				<swiper-item>
+					<view class="swiper-item" @click="goNeightbor">
+						<image src="https://statich.yidianzixun.com/public/file/1605754071093/swiper1.png" mode="aspectFit"></image>
+					</view>
+				</swiper-item>
+				<swiper-item>
+					<view class="swiper-item">
+						<image src="https://statich.yidianzixun.com/public/file/1605754071093/swiper1.png" mode="aspectFit"></image>
+					</view>
+				</swiper-item>
+			</swiper>
+		</scroll-view>
+	</view>
+
 </template>
 
 <script>
 	export default {
-		data() {
-			return {
-				title: 'Hello'
+		onLoad() {
+			uni.hideTabBar()
+		},
+		computed: {
+			initState() {
+				return this.$store.state.init
 			}
 		},
-		onLoad() {
-			console.log(11);
+		beforeCreate() {
+			console.log(this.$store.state.init)
+			if (!this.$store.state.init) {
+				setTimeout(() => {
+					this.$store.dispatch('changeInit');
+					uni.showTabBar()
+				}, 3000)
+			} else {
+				uni.showTabBar()
+			}
+		},
+		mounted() {
+			// console.log(this.initState)
 		},
 		methods: {
 			goAppointment() {
@@ -47,16 +68,37 @@
 					url: "../projects/projects"
 				})
 			},
+			goNeightbor() {
+				uni.navigateTo({
+					url: "../neighbor/neighbor"
+				})
+			}
 		}
 	}
 </script>
 
 <style>
+	.index {
+		width: 100vw;
+		height: 100vh;
+	}
+
+	.content-init {
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		z-index: 99;
+	}
+
+	.content-init>image {
+		width: 100vw;
+		height: 100vh;
+	}
+
 	.content {
 		width: 100vw;
-		height: 100%;
+		height: 100vh;
 		position: relative;
-		overflow: scroll;
 		font-size: 0;
 	}
 
