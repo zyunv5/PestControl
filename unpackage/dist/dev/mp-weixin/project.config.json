@@ -1,41 +1,43 @@
 {
-  "description": "项目配置文件。",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": false,
-    "postcss": false,
-    "minified": false,
-    "es6": false
-  },
-  "compileType": "miniprogram",
-  "libVersion": "",
-  "appid": "wx0e07f179ae5cb1c5",
-  "projectname": "PestControl",
-  "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "current": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "current": 0,
-      "list": [
-        {
-          "name": "appointment",
-          "query": "",
-          "id": 0,
-          "pathName": "pages/appointment/appointment"
-        }
-      ]
-    }
-  }
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"postcss": false,
+		"minified": false,
+		"es6": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "",
+	"appid": "wx0e07f179ae5cb1c5",
+	"projectname": "PestControl",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"name": "appointment",
+					"query": "",
+					"id": 0,
+					"pathName": "pages/appointment/appointment"
+				}
+			]
+		}
+	}
 }
