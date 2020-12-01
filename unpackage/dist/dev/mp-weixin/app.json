@@ -25,14 +25,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "static/index.png",
-        "selectedIconPath": "static/index.png"
+        "iconPath": "static/homeBefore.png",
+        "selectedIconPath": "static/homeAfter.png"
+      },
+      {
+        "pagePath": "pages/appointment/appointment",
+        "text": "预约",
+        "iconPath": "static/appointmentBefore.png",
+        "selectedIconPath": "static/appointmentAfter.png"
       },
       {
         "pagePath": "pages/self/self",
         "text": "我的",
-        "iconPath": "static/self.png",
-        "selectedIconPath": "static/self.png"
+        "iconPath": "static/meBefore.png",
+        "selectedIconPath": "static/meAfter.png"
       }
     ]
   },

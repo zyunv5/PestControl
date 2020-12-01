@@ -7882,9 +7882,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!***************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json ***!
-  \***************************************************************/
+/*!************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/pages.json ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8025,9 +8025,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 11 */
-/*!*******************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/store/index.js ***!
-  \*******************************************************************/
+/*!****************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/store/index.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

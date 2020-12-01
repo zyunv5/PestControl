@@ -130,9 +130,8 @@
 .apponitment{
 	box-sizing: border-box;
 	width:100%;
-	height:100vh;
 	background-color: rgb(234,234,234);
-	padding-top: 10rpx;
+	padding-top: 30rpx;
 	padding-left: 70rpx;
 }
 .apponitment-title{

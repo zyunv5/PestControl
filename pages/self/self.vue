@@ -2,7 +2,7 @@
 	<view class="self">
 		<view class="self-header">
 			<view class="header-avatar">
-				<image class="avatar-img" src="../../static/avatar.png" mode="scaleToFill"></image>
+				<image class="avatar-img" src="../../static/icon.png" mode="scaleToFill"></image>
 			</view>
 			<view class="header-user">
 				<span class="user-title">虫杀杀小管家</span>
