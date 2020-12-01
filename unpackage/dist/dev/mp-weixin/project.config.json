@@ -29,15 +29,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"name": "appointment",
-					"query": "",
-					"id": 0,
-					"pathName": "pages/appointment/appointment"
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }

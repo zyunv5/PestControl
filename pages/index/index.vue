@@ -4,22 +4,22 @@
 			<image src="https://statich.yidianzixun.com/public/file/1606285599416/init.jpg" alt="" mode="scaleToFill">
 		</view>
 		<scroll-view class="content" v-show="initState" scroll-y>
-			<image class="content-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1605598295554/bg.jpg"
+			<image class="content-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1606803976959/index.jpg"
 			 mode="widthFix"></image>
 			<view class="content-list">
-				<image @click="goAppointment" src="https://statich.yidianzixun.com/public/file/1606286771148/p1.png" mode="aspectFit"></image>
-				<image @click="goExplain" src="https://statich.yidianzixun.com/public/file/1606286771148/p2.png" mode="aspectFit"></image>
-				<image @click="goProjects" src="https://statich.yidianzixun.com/public/file/1606286771148/p3.png" mode="aspectFit"></image>
+				<image @click="goAppointment" src="https://statich.yidianzixun.com/public/file/1606286771148/p1.png" mode="widthFix"></image>
+				<image @click="goExplain" src="https://statich.yidianzixun.com/public/file/1606286771148/p2.png" mode="widthFix"></image>
+				<image @click="goProjects" src="https://statich.yidianzixun.com/public/file/1606286771148/p3.png" mode="widthFix"></image>
 			</view>
 			<swiper class="content-swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
 				<swiper-item>
 					<view class="swiper-item" @click="goNeightbor">
-						<image src="https://statich.yidianzixun.com/public/file/1605754071093/swiper1.png" mode="aspectFit"></image>
+						<image src="https://statich.yidianzixun.com/public/file/1605754071093/swiper1.png" mode="widthFix"></image>
 					</view>
 				</swiper-item>
 				<swiper-item>
 					<view class="swiper-item">
-						<image src="https://statich.yidianzixun.com/public/file/1605754071093/swiper1.png" mode="aspectFit"></image>
+						<image src="https://statich.yidianzixun.com/public/file/1605754071093/swiper1.png" mode="widthFix"></image>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -109,7 +109,7 @@
 
 	.content-list {
 		position: absolute;
-		width: 80%;
+		width: 92%;
 		height: auto;
 		margin: 0 auto;
 		top: 332rpx;
@@ -122,22 +122,22 @@
 	}
 
 	.content-list image {
-		width: 185rpx;
-		height: 185rpx;
+		width: 213rpx;
+		height: 213rpx;
 	}
 
 	.content-swiper {
 		position: absolute;
-		top: 540rpx;
+		top: 600rpx;
 		left: 0;
 		right: 0;
 		margin: 0 auto;
-		width: 600rpx;
+		width: 692rpx;
 		height: 344rpx;
 	}
 
 	.swiper-item image {
-		width: 600rpx;
+		width: 692rpx;
 		height: 344rpx;
 	}
 </style>

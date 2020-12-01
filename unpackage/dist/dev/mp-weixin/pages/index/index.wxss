@@ -25,7 +25,7 @@
 }
 .content-list {
 	position: absolute;
-	width: 80%;
+	width: 92%;
 	height: auto;
 	margin: 0 auto;
 	top: 332rpx;
@@ -46,20 +46,20 @@
 	        align-items: flex-start;
 }
 .content-list image {
-	width: 185rpx;
-	height: 185rpx;
+	width: 213rpx;
+	height: 213rpx;
 }
 .content-swiper {
 	position: absolute;
-	top: 540rpx;
+	top: 600rpx;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
-	width: 600rpx;
+	width: 692rpx;
 	height: 344rpx;
 }
 .swiper-item image {
-	width: 600rpx;
+	width: 692rpx;
 	height: 344rpx;
 }
 

@@ -30,7 +30,6 @@
 				"navigationBarTitleText": "费用说明",
 				"enablePullDownRefresh": false
 			}
-
 		}, {
 			"path": "pages/projects/projects",
 			"style": {
