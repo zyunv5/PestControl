@@ -4,8 +4,8 @@
 	        box-sizing: border-box;
 	width:100%;
 	background-color: rgb(234,234,234);
-	padding-top: 30rpx;
-	padding-left: 70rpx;
+	padding: 20rpx 4% 0 4%;
+	box-sizing: border-box;
 }
 .apponitment-title{
 	width: 186rpx;

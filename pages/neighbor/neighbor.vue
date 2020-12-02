@@ -1,6 +1,6 @@
 <template>
 	<scroll-view class="neighbor" scroll-y>
-			<image lazy-load="true" class="neighbor-bg" src="https://statich.yidianzixun.com/public/file/1605671209343/neighbor.jpg" mode="scaleToFill"></image>
+			<image lazy-load="true" class="neighbor-bg" src="https://statich.yidianzixun.com/public/file/1606880187859/neighbor.png" mode="widthFix"></image>
 	</scroll-view>
 </template>
 
@@ -20,7 +20,6 @@
 <style>
 .neighbor {
 		width: 100vw;
-		height: 100vh;
 		position: relative;
 		overflow: scroll;
 		font-size: 0;

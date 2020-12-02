@@ -111,7 +111,7 @@
 	}
 
 	.bottom-list {
-		width: 632rpx;
+		width: 665rpx;
 		height: 116rpx;
 		border-radius: 10rpx;
 		background-color: #fff;

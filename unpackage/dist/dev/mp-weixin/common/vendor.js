@@ -7882,9 +7882,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/pages.json ***!
-  \************************************************************/
+/*!***************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8025,9 +8025,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 11 */
-/*!****************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/store/index.js ***!
-  \****************************************************************/
+/*!*******************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/store/index.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8037,7 +8037,8 @@ var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 12));function
 _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
   state: {
-    init: false },
+    // init:false
+    init: true },
 
   mutations: {
     changeInitState: function changeInitState(state) {

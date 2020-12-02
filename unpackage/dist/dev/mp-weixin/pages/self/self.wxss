@@ -77,7 +77,7 @@
 	        flex-direction: column;
 }
 .bottom-list.data-v-6cbfa486 {
-	width: 632rpx;
+	width: 665rpx;
 	height: 116rpx;
 	-webkit-border-radius: 10rpx;
 	        border-radius: 10rpx;

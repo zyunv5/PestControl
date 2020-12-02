@@ -3,7 +3,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
-			init:false
+			// init:false
+			init:true
 		},
     mutations: {
 			changeInitState(state){

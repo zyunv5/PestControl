@@ -29,17 +29,17 @@
 			<view class="time-list">
 				<picker mode="selector" :value="day" :range='days' @change="dayChange($event)">
 				    <view class="picker">
-				    {{day}}日
+				    {{day+1}}日
 				    </view>
 				  </picker>
 			</view>
 		</view>
 		<view class="apponitment-day">
-			<view class="day-item" :class="[item.active?'day-item-active':'']" v-for="item in dayTime" :key="item.time">
+			<view class="day-item" :class="[item.active?'day-item-active':'']" v-for="item in dayTime" :key="item.time" @click="changeTime(item)">
 				<view class="item-text">{{item.noon}}</view>
 				<view class="item-text">{{item.time}}</view>
 			</view>
-			<view class="day-item day-next">
+			<view class="day-item day-next" @click="nextDay">
 				<text>后一天</text>
 			</view>
 		</view>
@@ -59,14 +59,14 @@
 			        const months = []
 			        const month = date.getMonth()
 			        const days = []
-			        const day = date.getDate()
+			        const day = date.getDate()-1
 			        for (let i = year; i <= date.getFullYear()+10; i++) {
 			            years.push(i)
 			        }
 			        for (let i = 1; i <= 12; i++) {
 			            months.push(i)
 			        }
-			        for (let i = 0; i <= 31; i++) {
+			        for (let i = 1; i <= 31; i++) {
 			            days.push(i)
 			        }
 			return {
@@ -77,7 +77,7 @@
 				day,
 				days,
 				dayTime:[
-					{noon:"上午",time:"9:00",active:true},
+					{noon:"上午",time:"09:00",active:false},
 					{noon:"上午",time:"11:00",active:false},
 					{noon:"下午",time:"13:00",active:false},
 					{noon:"下午",time:"15:00",active:false},
@@ -86,43 +86,42 @@
 					{noon:"下午",time:"21:00",active:false},
 					],
 					area:"选择您所在社区",
-					bgMap:["西城区",
-	"崇文区",
-	"宣武区",
-	"朝阳区",
-	"丰台区",
-	"石景山区",
-	"海淀区",
-	"门头沟区",
-	"房山区",
-	"通州区",
-	"顺义区",
-	"昌平区",
-	"大兴区",
-	"平谷区",
-	"怀柔区",
-	"密云县",
-	"延庆县"],
-	areaColor:false
+					bgMap:["西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","平谷区","怀柔区","密云县","延庆县"],
+					areaColor:false
 			}
 		},
 		methods: {
+			// 更改年份
 			 yearChange(e){
 				 this.year=this.years[e.target.value]
+				 this.dayTime.forEach(item=>item.active=false)
 			 },
+			 // 更改月份
 			 monthChange(e){
 				 this.month=this.months[e.target.value]-1
+				 this.dayTime.forEach(item=>item.active=false)
 			 },
+			 // 更改日期
 			 dayChange(e){
-				 this.day=this.days[e.target.value]
+				 this.day=this.days[e.target.value]-1
+				 this.dayTime.forEach(item=>item.active=false)
 			 },
+			 // 更改区域
 			 areaChange(val){
 				 this.area=this.bgMap[val.detail.value]
 				 this.areaColor=true
+			 },
+			 // 选中时间
+			 changeTime(item){
+				 this.dayTime.forEach(item=>item.active=false)
+				 item.active=true
+			 },
+			 // 选择下一天
+			 nextDay(){
+				 
 			 }
 		},
-		mounted() {
-		}
+		mounted() {}
 	}
 </script>
 
@@ -131,8 +130,8 @@
 	box-sizing: border-box;
 	width:100%;
 	background-color: rgb(234,234,234);
-	padding-top: 30rpx;
-	padding-left: 70rpx;
+	padding: 20rpx 4% 0 4%;
+	box-sizing: border-box;
 }
 .apponitment-title{
 	width: 186rpx;

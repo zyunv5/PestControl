@@ -31,7 +31,7 @@
 <script>
 	export default {
 		onLoad() {
-			uni.hideTabBar()
+			// uni.hideTabBar()
 		},
 		computed: {
 			initState() {
@@ -39,7 +39,6 @@
 			}
 		},
 		beforeCreate() {
-			console.log(this.$store.state.init)
 			if (!this.$store.state.init) {
 				setTimeout(() => {
 					this.$store.dispatch('changeInit');
@@ -54,7 +53,7 @@
 		},
 		methods: {
 			goAppointment() {
-				uni.navigateTo({
+				uni.switchTab({
 					url: "../appointment/appointment"
 				})
 			},
@@ -112,7 +111,7 @@
 		width: 92%;
 		height: auto;
 		margin: 0 auto;
-		top: 332rpx;
+		top: 318rpx;
 		left: 0;
 		right: 0;
 		display: flex;
@@ -123,21 +122,21 @@
 
 	.content-list image {
 		width: 213rpx;
-		height: 213rpx;
+		height: auto;
 	}
 
 	.content-swiper {
 		position: absolute;
-		top: 600rpx;
+		top: 559rpx;
 		left: 0;
 		right: 0;
 		margin: 0 auto;
 		width: 692rpx;
-		height: 344rpx;
+		height: 395rpx;
 	}
 
 	.swiper-item image {
 		width: 692rpx;
-		height: 344rpx;
+		height: 395rpx;
 	}
 </style>
