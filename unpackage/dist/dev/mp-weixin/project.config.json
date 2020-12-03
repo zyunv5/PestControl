@@ -30,10 +30,10 @@
       "current": 0,
       "list": [
         {
-          "name": "explain",
+          "name": "detail",
           "query": "",
           "id": 0,
-          "pathName": "pages/explain/explain"
+          "pathName": "pages/detail/detail"
         }
       ]
     }

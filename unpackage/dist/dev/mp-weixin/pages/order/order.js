@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -159,13 +159,33 @@ var _default =
 {
   data: function data() {
     return {
-      isActive: 0 };
+      isActive: 0,
+      listData: [
+      {
+        id: 1,
+        project: "安心家服务",
+        orderTime: "2020/11/5 15:32",
+        serviceTime: "2020/11/6 15:00" },
+
+      {
+        id: 2,
+        project: "安心家服务",
+        orderTime: "2020/11/5 15:35",
+        serviceTime: "2020/11/6 18:00" }] };
+
+
 
   },
   methods: {
     changeTab: function changeTab(num) {
       this.isActive = num;
+    },
+    seeDetail: function seeDetail(id) {
+      uni.navigateTo({
+        url: "../detail/detail?id=".concat(id) });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

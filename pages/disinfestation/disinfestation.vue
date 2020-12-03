@@ -1,6 +1,6 @@
 <template>
 	<scroll-view class="disinfestation" scroll-y>
-		<image class="disinfestation-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1606805602975/appointment-bg.jpg" mode="widthFix"></image>
+		<image class="disinfestation-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1606976014809/appointment-bg.png" mode="widthFix"></image>
 		<view class="disinfestation-button" @click="goAppointment"></view>
 	</scroll-view>
 </template>

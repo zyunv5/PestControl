@@ -131,23 +131,22 @@
 	width:100%;
 	background-color: rgb(234,234,234);
 	padding: 20rpx 4% 0 4%;
-	box-sizing: border-box;
 }
 .apponitment-title{
-	width: 186rpx;
-	height: 105rpx;
+	width: 219rpx;
+	height: 122rpx;
 	display: block;
 	margin-bottom: 48rpx;
 }
 .apponitment-title-form{
-	width: 230rpx;
-	height: 40rpx;
+	width: 271rpx;
+	height: 45rpx;
 	display: block;
 	margin-bottom: 35rpx;
 }
 .apponitment-form{
-	width: 606rpx;
-	height: 390rpx;
+	width: 705rpx;
+	height: 452rpx;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -155,64 +154,66 @@
 }
 .form-list{
 	box-sizing: border-box;
-	width: 606rpx;
-	height: 70rpx;
+	width: 675rpx;
+	height: 78rpx;
 	background-color: #fff;
 	border-radius:10rpx ;
 	padding-left: 30rpx;
 	font-size: 25rpx;
+	margin: 0 auto;
 }
 .form-list .picker{
-	line-height: 70rpx;
+	line-height: 78rpx;
 }
 .form-textarea{
 	box-sizing: border-box;
-	width: 606rpx;
-	height: 125rpx;
+	width: 675rpx;
+	height: 144rpx;
 	background-color: #fff;
 	border-radius:10rpx ;
 	padding-top: 20rpx;
 	padding-left: 30rpx;
 	font-size: 25rpx;
+	margin: 0 auto;
 }
 .apponitment-title-time{
-	width: 372rpx;
-	height: 42rpx;
+	width: 430rpx;
+	height: 47rpx;
 	display: block;
 	margin-bottom: 42rpx;
 }
 .apponitment-time{
-	width: 604rpx;
+	width: 675rpx;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin-bottom: 32rpx;
+	margin:0 auto 32rpx;
 }
 .time-list{
-	width: 160rpx;
-	height: 68rpx;
+	width: 184rpx;
+	height: 78rpx;
 	border-radius: 10rpx;
 	background-color: #fff;
 	color:#000;
 	text-align: center;
-	line-height: 68rpx;
+	line-height: 78rpx;
 }
 .time-year{
-	width: 224rpx;
+	width: 258rpx;
 }
 .apponitment-day{
-	width: 606rpx;
-	height: 228rpx;
+	width: 675rpx;
+	height: 263rpx;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	margin-bottom: 30rpx;
+	margin:0 auto 30rpx;
 }
 .day-item{
 	box-sizing: border-box;
-	width: 136rpx;
-	height: 100rpx;
+	width: 156rpx;
+	height: 115rpx;
 	background-color: #fff;
 	border: 1rpx solid rgb(223,223,223);
 	border-radius: 10rpx;
@@ -238,13 +239,14 @@
 	border: 1rpx solid rgb(255,101,16);
 }
 .apponitment-submit{
-	width:606rpx;
-	height: 84rpx;
-	line-height: 84rpx;
+	width:675rpx;
+	height: 96rpx;
+	line-height: 96rpx;
 	text-align: center;
 	background-color: rgb(21,23,44);
 	color: #fff;
 	border-radius: 10rpx;
+	margin: 0 auto;
 }
 .picker{
 	color:#999999;

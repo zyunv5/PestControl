@@ -5,10 +5,10 @@
 			<view class="switch-list switch-end" :class="{'switch-select select-right':isActive===1}" @click="changeTab(1)">已完成的订单</view>
 		</view>
 		<scroll-view scroll-y="true" class="order-content" v-if="isActive===0">
-			<view class="content-list">
-				<span class="list-title">安心家服务</span>
-				<span class="list-time">下单时间:2020/11/5 15:32</span>
-				<span class="list-time">安心家服务:2020/11/6 15:00</span>
+			<view class="content-list" v-for="item in listData" :key="item.id" @click="seeDetail(item.id)">
+				<span class="list-title">{{item.project}}</span>
+				<span class="list-time">下单时间:{{item.orderTime}}</span>
+				<span class="list-time">安心家服务:{{item.serviceTime}}</span>
 			</view>
 			<image class="content-img" src="../../static/list-bottom.png" mode="widthFix"></image>
 		</scroll-view>
@@ -27,12 +27,31 @@
 	export default {
 		data() {
 			return {
-				isActive: 0
+				isActive: 0,
+				listData:[
+					{
+						id:1,
+						project:"安心家服务",
+						orderTime:"2020/11/5 15:32",
+						serviceTime:"2020/11/6 15:00"
+					},
+					{
+						id:2,
+						project:"安心家服务",
+						orderTime:"2020/11/5 15:35",
+						serviceTime:"2020/11/6 18:00"
+					},
+				]
 			}
 		},
 		methods: {
 			changeTab(num) {
 				this.isActive = num
+			},
+			seeDetail(id){
+				uni.navigateTo({
+					url: `../detail/detail?id=${id}`
+				})
 			}
 		}
 	}
@@ -91,6 +110,7 @@
 		flex-direction: column;
 		padding-top: 40rpx;
 		padding-left: 40rpx;
+		margin-bottom: 20rpx;
 	}
 
 	.list-title {
