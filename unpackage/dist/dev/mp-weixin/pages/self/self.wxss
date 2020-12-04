@@ -97,12 +97,16 @@
 	        box-sizing: border-box;
 	padding-left: 40rpx;
 }
-.order-icon.data-v-6cbfa486,.customer-icon.data-v-6cbfa486,.question-icon.data-v-6cbfa486{
+.order-icon.data-v-6cbfa486,
+.customer-icon.data-v-6cbfa486,
+.question-icon.data-v-6cbfa486 {
 	width: 70rpx;
 	height: 60rpx;
 	margin-right: 10rpx;
 }
-.order-icon image.data-v-6cbfa486,.customer-icon image.data-v-6cbfa486,.question-icon image.data-v-6cbfa486{
+.order-icon image.data-v-6cbfa486,
+.customer-icon image.data-v-6cbfa486,
+.question-icon image.data-v-6cbfa486 {
 	width: 100%;
 }
 

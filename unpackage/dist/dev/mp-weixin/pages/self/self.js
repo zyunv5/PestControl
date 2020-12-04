@@ -164,7 +164,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var _default =
 {
   data: function data() {
@@ -177,6 +176,28 @@ var _default =
     goOrder: function goOrder() {
       uni.navigateTo({
         url: "../order/order" });
+
+    },
+    getUserInfo: function getUserInfo() {
+      // 必须是在用户已经授权的情况下调用，
+      wx.getUserInfo({
+        success: function success(res) {
+          var userInfo = res.userInfo; //userInfo里面存储用户的基本信息
+          var nickName = userInfo.nickName;
+          var avatarUrl = userInfo.avatarUrl;
+          // const gender = userInfo.gender // 性别 0：未知、1：男、2：女
+          // const province = userInfo.province
+          // const city = userInfo.city
+          // const country = userInfo.country
+          var encryptedData = res.encryptedData; //包括敏感数据在内的完整用户信息的加密数据
+          var rawData = res.rawData; //不包括敏感信息的原始数据字符串，用于计算签名
+          var signature = res.signature; //使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息
+          console.log(res);
+        },
+        fail: function fail(err) {
+          //在用户未授权过的情况下调用此接口，将不再出现授权弹窗,会执行该fail函数
+          console.log("用户未授权");
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

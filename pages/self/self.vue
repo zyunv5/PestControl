@@ -5,28 +5,27 @@
 				<image class="avatar-img" src="../../static/icon.png" mode="scaleToFill"></image>
 			</view>
 			<view class="header-user">
-				<span class="user-title">虫杀杀小管家</span>
-				<span class="user-name">用户名：{{username}}</span>
-				<span class="user-phone">绑定手机：{{userphone}}</span>
+				<button class="user-title" open-type="getUserInfo" @getuserinfo='getUserInfo'>授权登录</button>
+				<!-- <open-data type="userAvatarUrl"></open-data> -->
 			</view>
 		</view>
 		<view class="self-bar"></view>
 		<view class="self-bottom">
 			<view @click="goOrder" class="bottom-list">
 				<view class="order-icon">
-					<image src="../../static/i1.jpg" mode="widthFix"></image>
+					<image src="../../static/i1.png" mode="widthFix"></image>
 				</view>
 				<view>我的订单</view>
 			</view>
 			<view class="bottom-list">
 				<view class="customer-icon">
-					<image src="../../static/i2.jpg" mode="widthFix"></image>
+					<image src="../../static/i2.png" mode="widthFix"></image>
 				</view>
 				<view>联系客服</view>
 			</view>
 			<view class="bottom-list">
 				<view class="question-icon">
-					<image src="../../static/i3.jpg" mode="widthFix"></image>
+					<image src="../../static/i3.png" mode="widthFix"></image>
 				</view>
 				<view>常见问题</view>
 			</view>
@@ -46,8 +45,30 @@
 				uni.navigateTo({
 					url: "../order/order"
 				})
+			},
+			getUserInfo() {
+				// 必须是在用户已经授权的情况下调用，
+				wx.getUserInfo({
+					success(res) {
+						const userInfo = res.userInfo //userInfo里面存储用户的基本信息
+						const nickName = userInfo.nickName
+						const avatarUrl = userInfo.avatarUrl
+						// const gender = userInfo.gender // 性别 0：未知、1：男、2：女
+						// const province = userInfo.province
+						// const city = userInfo.city
+						// const country = userInfo.country
+						const encryptedData = res.encryptedData //包括敏感数据在内的完整用户信息的加密数据
+						const rawData = res.rawData //不包括敏感信息的原始数据字符串，用于计算签名
+						const signature = res.signature //使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息
+						console.log(res);
+					},
+					fail(err) {
+						//在用户未授权过的情况下调用此接口，将不再出现授权弹窗,会执行该fail函数
+						console.log("用户未授权")
+					}
+				})
 			}
-		}
+		},
 	}
 </script>
 <style scoped>
@@ -122,12 +143,18 @@
 		box-sizing: border-box;
 		padding-left: 40rpx;
 	}
-	.order-icon,.customer-icon,.question-icon{
+
+	.order-icon,
+	.customer-icon,
+	.question-icon {
 		width: 70rpx;
 		height: 60rpx;
 		margin-right: 10rpx;
 	}
-	.order-icon image,.customer-icon image,.question-icon image{
+
+	.order-icon image,
+	.customer-icon image,
+	.question-icon image {
 		width: 100%;
 	}
 </style>
