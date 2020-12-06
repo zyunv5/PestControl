@@ -44,6 +44,8 @@
     ]
   },
   "permission": {},
-  "usingComponents": {},
-  "sitemapLocation": "sitemap41.json"
+  "uniStatistics": {
+    "enable": true
+  },
+  "usingComponents": {}
 }

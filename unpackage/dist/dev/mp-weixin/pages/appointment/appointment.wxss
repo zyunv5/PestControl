@@ -90,6 +90,16 @@
 	color:#000;
 	text-align: center;
 	line-height: 78rpx;
+	position: relative;
+}
+.time-list-icon{
+	position: absolute;
+	right:8%;
+	top:50%;
+	-webkit-transform: translate(0,-50%);
+	        transform: translate(0,-50%);
+	width:30rpx;
+	height: 20rpx;
 }
 .time-year{
 	width: 258rpx;
@@ -158,7 +168,7 @@
 	color: #fff;
 	-webkit-border-radius: 10rpx;
 	        border-radius: 10rpx;
-	margin: 0 auto;
+	margin: 0 auto 20rpx;
 }
 .picker{
 	color:#999999;

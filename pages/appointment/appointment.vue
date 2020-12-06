@@ -3,12 +3,12 @@
 		<image class="apponitment-title" src="../../static/appointment-title.png" mode="aspectFit"></image>
 		<image class="apponitment-title-form" src="../../static/form_info.png" mode="widthFix"></image>
 		<view class="apponitment-form">
-			<input class="form-list" type="text" placeholder="请填写您的姓名" v-model="user">
-			<input class="form-list" type="text" placeholder="请填写您的联系方式" v-model="phone">
+			<input class="form-list" placeholder-style="color:#999999;" type="text" placeholder="请填写您的姓名" v-model="user">
+			<input class="form-list" placeholder-style="color:#999999;" type="text" placeholder="请填写您的联系方式" v-model="phone">
 			<picker class="form-list" mode="selector" :value="area" :range='bgMap' @change="areaChange">
 				<view class="picker" :class="[areaColor?'text-active':'']">{{area}}</view>
 			</picker>
-			<textarea class="form-textarea" placeholder="请填写详细的楼号、楼层、门牌号等信息" />
+			<textarea class="form-textarea" placeholder-style="color:#999999;" placeholder="请填写详细的楼号、楼层、门牌号等信息" v-model="address" />
 			</view>
 		<image class="apponitment-title-time" src="../../static/appointment_time.png" mode="widthFix"></image>
 		<view class="apponitment-time">
@@ -17,6 +17,7 @@
 				    <view class="picker">
 				      {{year}}年
 				    </view>
+					<image class="time-list-icon" src="../../static/select_icon.png" mode="widthFix"></image>
 				  </picker>
 			</view>
 			<view class="time-list">
@@ -24,6 +25,7 @@
 					     <view class="picker">
 					       {{month+1}}月
 					     </view>
+						 <image class="time-list-icon" src="../../static/select_icon.png" mode="widthFix"></image>
 					   </picker>
 			</view>
 			<view class="time-list">
@@ -31,6 +33,7 @@
 				    <view class="picker">
 				    {{day+1}}日
 				    </view>
+					<image class="time-list-icon" src="../../static/select_icon.png" mode="widthFix"></image>
 				  </picker>
 			</view>
 		</view>
@@ -43,7 +46,7 @@
 				<text>后一天</text>
 			</view>
 		</view>
-		<view class="apponitment-submit">
+		<view class="apponitment-submit" @click="submitForm">
 			提交订单
 		</view>
 	</scroll-view>
@@ -87,7 +90,10 @@
 					],
 					area:"选择您所在社区",
 					bgMap:["西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","平谷区","怀柔区","密云县","延庆县"],
-					areaColor:false
+					areaColor:false,
+					user:"",
+					phone:"",
+					address:""
 			}
 		},
 		methods: {
@@ -119,6 +125,69 @@
 			 // 选择下一天
 			 nextDay(){
 				 
+			 },
+			 submitForm(){
+				let timeActive=this.dayTime.filter(item=>item.active)
+				let m=this.month+1<10?"0"+(this.month+1):this.month+1
+				let d=this.day+1<10?"0"+(this.day+1):this.day+1
+				if(!this.user){
+					this.alert("","请填写用户姓名")
+				}else if(!this.phone){
+					this.alert("","请填写正确的手机号")
+				}else if(this.area==="选择您所在社区"){
+					this.alert("","请选择您所在社区")
+				}else if(!this.address){
+					this.alert("","请填写您的详细地址")
+				}else if(timeActive.length===0){
+					this.alert("","请选择日期")
+				}else if(this.checkTime(this.year,m,d,timeActive[0].time)){
+					this.alert("","所选日期早于当前日期")
+				}else{
+					let form={
+						user:this.user,
+						phone:this.phone,
+						area:this.area,
+						address:this.address,
+						time:`${this.year}-${m}-${d} ${timeActive[0].time}:00`
+					}
+					uni.request({
+					    url: 'http://localhost:7001/submit',
+						method:"POST",
+						 header: {
+						        'content-type': 'application/json'
+						    },
+					    data: {form:form},
+						dataType:'json',
+					    success: (res) => {
+					        console.log(res);
+					    }
+					});
+				}
+			 },
+			 alert(title = '',msg = '',confirm,cancel) {
+			   uni.showModal({
+			     title: title , 
+			     content: msg,
+			     showCancel: cancel ? true : false,
+			     success:res=>{
+			       if(res.confirm){
+			         if(confirm){
+			           confirm()
+			         }
+			       }
+			       if(res.cancel){
+			         if(cancel){
+			           cancel()
+			         }
+			       }
+			     }
+			   })
+			 },
+			 checkTime(year,month,day,time){
+				 let date=new Date(`${year}-${month}-${day} ${time}:00`)
+				 const nowDate = new Date()
+				 console.log(date.getTime(),nowDate.getTime(),date.getTime()<nowDate.getTime())
+				 return date.getTime()<nowDate.getTime()
 			 }
 		},
 		mounted() {}
@@ -197,6 +266,15 @@
 	color:#000;
 	text-align: center;
 	line-height: 78rpx;
+	position: relative;
+}
+.time-list-icon{
+	position: absolute;
+	right:8%;
+	top:50%;
+	transform: translate(0,-50%);
+	width:30rpx;
+	height: 20rpx;
 }
 .time-year{
 	width: 258rpx;
@@ -246,7 +324,7 @@
 	background-color: rgb(21,23,44);
 	color: #fff;
 	border-radius: 10rpx;
-	margin: 0 auto;
+	margin: 0 auto 20rpx;
 }
 .picker{
 	color:#999999;

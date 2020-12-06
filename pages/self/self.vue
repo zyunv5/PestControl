@@ -61,6 +61,23 @@
 						const rawData = res.rawData //不包括敏感信息的原始数据字符串，用于计算签名
 						const signature = res.signature //使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息
 						console.log(res);
+						
+						wx.login({
+						  success (res) {
+						    if (res.code) {
+								console.log(res.code);
+							  uni.request({
+							      url: 'https://localhost:7001/getOpenId',
+							      data: {code:res.code},
+							      success: (res) => {
+							          console.log(res);
+							      }
+							  });
+						    } else {
+						      console.log('登录失败！' + res.errMsg)
+						    }
+						  }
+						})
 					},
 					fail(err) {
 						//在用户未授权过的情况下调用此接口，将不再出现授权弹窗,会执行该fail函数
