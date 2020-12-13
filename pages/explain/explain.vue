@@ -1,4 +1,5 @@
 <template>
+	<!-- 费用说明 -->
 	<view class="explain">
 		<image class="explain-logo" src="https://statich.yidianzixun.com/public/file/1606877321188/explain_logo.png" mode="widthFix"></image>
 		<image class="explain-price1" src="https://statich.yidianzixun.com/public/file/1606877321188/price1.png" mode="widthFix"></image>
@@ -9,11 +10,6 @@
 
 <script>
 	export default {
-		data() {
-			return {
-
-			}
-		},
 		methods: {
 			goHome() {
 				uni.switchTab({
@@ -31,7 +27,7 @@
 		position: relative;
 		font-size: 0;
 		background-color: rgb(234, 234, 234);
-		padding: 20rpx 4% 0 4%;
+		padding: 20rpx 4% 20rpx 4%;
 		box-sizing: border-box;
 	}
 

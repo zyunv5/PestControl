@@ -1,4 +1,5 @@
 <template>
+	<!-- 主营项目 -->
 	<view class="project">
 		<view class="project-list">
 			<view class="list-title">服务类目名单</view>
@@ -11,10 +12,6 @@
 
 <script>
 	export default {
-		data() {
-			return {
-			}
-		},
 		methods: {
 			goDisinfestation() {
 				uni.navigateTo({

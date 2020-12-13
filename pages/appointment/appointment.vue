@@ -53,7 +53,7 @@
 </template>
 
 <script>
-	// import {bgMapJson} from "../../utils/bj-map.js"
+	import dayjs from 'dayjs'
 	export default {
 		data() {
 			const date = new Date()
@@ -100,16 +100,35 @@
 			// 更改年份
 			 yearChange(e){
 				 this.year=this.years[e.target.value]
+				 const beforeYear=this.years[e.target.value]
+				 const afterDay=dayjs(`${beforeYear}-${this.month+1}`).daysInMonth()
+				 this.dayOrigin(afterDay);
 				 this.dayTime.forEach(item=>item.active=false)
 			 },
-			 // 更改月份
-			 monthChange(e){
-				 this.month=this.months[e.target.value]-1
+			 // 更改月份 e是手指操作 m是后一天修改
+			 monthChange(e,m){
+				 this.month=m?m-1:this.months[e.target.value]-1
+				 let beforeMonth=m?m:this.months[e.target.value]
+				 const afterDay=dayjs(`${this.year}-${beforeMonth}`).daysInMonth()
+				 this.dayOrigin(afterDay);
 				 this.dayTime.forEach(item=>item.active=false)
+			 },
+			 //更改不同月份天数
+			 dayOrigin(days){
+				 let dayAfter=this.day,dayBefore=this.days
+				 let dayArray=[]
+				 for (let i = 1; i <= days; i++) {
+				     dayArray.push(i)
+				 }
+				this.days=dayArray
+				//判断是不是31号切换到30号
+				 if(dayAfter=="30"){
+				 	this.day=this.days[this.days.length-1]-1
+				 }		
 			 },
 			 // 更改日期
-			 dayChange(e){
-				 this.day=this.days[e.target.value]-1
+			 dayChange(e,d){
+				 this.day=d?d-1:this.days[e.target.value]-1
 				 this.dayTime.forEach(item=>item.active=false)
 			 },
 			 // 更改区域
@@ -124,8 +143,15 @@
 			 },
 			 // 选择下一天
 			 nextDay(){
-				 
+				 let year=this.year,month=this.month,day=this.day;
+				 let addDay=dayjs(`${year}-${month+1}-${day+1}`).add(1, 'day');
+				 let newYear=addDay.year();
+				 let newMonth=addDay.month()+1;
+				 let newDay=addDay.date()
+				 this.monthChange("",newMonth)
+				 this.dayChange("",newDay)
 			 },
+			 //提交表单
 			 submitForm(){
 				let timeActive=this.dayTime.filter(item=>item.active)
 				let m=this.month+1<10?"0"+(this.month+1):this.month+1
@@ -164,6 +190,7 @@
 					});
 				}
 			 },
+			 //弹出弹框
 			 alert(title = '',msg = '',confirm,cancel) {
 			   uni.showModal({
 			     title: title , 
@@ -183,14 +210,16 @@
 			     }
 			   })
 			 },
+			 //校验时间
 			 checkTime(year,month,day,time){
 				 let date=new Date(`${year}-${month}-${day} ${time}:00`)
 				 const nowDate = new Date()
-				 console.log(date.getTime(),nowDate.getTime(),date.getTime()<nowDate.getTime())
 				 return date.getTime()<nowDate.getTime()
 			 }
 		},
-		mounted() {}
+		mounted() {
+			// console.log(dayjs('2020-02').daysInMonth())
+		}
 	}
 </script>
 

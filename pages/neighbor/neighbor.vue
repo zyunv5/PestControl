@@ -1,21 +1,9 @@
 <template>
+	<!-- 相邻计划 -->
 	<scroll-view class="neighbor" scroll-y>
 			<image lazy-load="true" class="neighbor-bg" src="https://statich.yidianzixun.com/public/file/1606880187859/neighbor.png" mode="widthFix"></image>
 	</scroll-view>
 </template>
-
-<script>
-	export default {
-		data() {
-			return {
-				
-			}
-		},
-		methods: {
-			
-		}
-	}
-</script>
 
 <style>
 .neighbor {

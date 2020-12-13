@@ -1,4 +1,5 @@
 <template>
+	<!-- 我的 -->
 	<view class="self">
 		<view class="self-header">
 			<view class="header-avatar">

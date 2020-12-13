@@ -1,4 +1,5 @@
 <template>
+	<!-- 首页 -->
 	<view class="index">
 		<view class="content-init" v-show="!initState">
 			<image src="https://statich.yidianzixun.com/public/file/1606285599416/init.jpg" alt="" mode="scaleToFill">
