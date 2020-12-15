@@ -44,6 +44,19 @@
 				]
 			}
 		},
+		beforeCreate() {
+			const token=wx.getStorageSync("token")
+			uni.request({
+				url: 'http://localhost:7001/getUserOrder',
+				method: "GET",
+				data: {
+					token: token
+				},
+				success: (res) => {
+					console.log(res);
+				}
+			});
+		},
 		methods: {
 			changeTab(num) {
 				this.isActive = num

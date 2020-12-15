@@ -36,9 +36,12 @@
 .avatar-img.data-v-6cbfa486 {
 	width: 100%;
 	height: 100%;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
 }
 .header-user.data-v-6cbfa486 {
-	width: 300rpx;
+	width: 200rpx;
+	height: 150rpx;
 	margin-left: 25rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -47,6 +50,9 @@
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
 	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
 }
 .header-user ._span.data-v-6cbfa486 {
 	color: #fff;
@@ -54,6 +60,11 @@
 .header-user ._span.data-v-6cbfa486:nth-child(2),
 .header-user ._span.data-v-6cbfa486:nth-child(3) {
 	font-size: 12px;
+}
+.user-title.data-v-6cbfa486 {
+	background-color: transparent;
+	color: rgb(255, 101, 18);
+	padding: 0;
 }
 .self-bar.data-v-6cbfa486 {
 	height: 25rpx;

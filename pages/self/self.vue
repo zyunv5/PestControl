@@ -3,11 +3,10 @@
 	<view class="self">
 		<view class="self-header">
 			<view class="header-avatar">
-				<image class="avatar-img" src="../../static/icon.png" mode="scaleToFill"></image>
+				<image class="avatar-img" :src="userAvatar" mode="scaleToFill"></image>
 			</view>
 			<view class="header-user">
-				<button class="user-title" open-type="getUserInfo" @getuserinfo='getUserInfo'>授权登录</button>
-				<!-- <open-data type="userAvatarUrl"></open-data> -->
+				<button class="user-title" open-type="getUserInfo" @getuserinfo='getUserInfo'>{{userName}}</button>
 			</view>
 		</view>
 		<view class="self-bar"></view>
@@ -37,47 +36,51 @@
 	export default {
 		data() {
 			return {
-				username: 'aacc',
-				userphone: 13933330000
+				userName: '登录|注册',
+				userAvatar: "../../static/icon.png"
 			}
 		},
 		methods: {
 			goOrder() {
-				uni.navigateTo({
-					url: "../order/order"
-				})
+				const token = wx.getStorageSync('token');
+				console.log("goOrder"+token)
+				if (!token) {
+					uni.showToast({
+						title: "请先登录",
+						icon: "none"
+					})
+				} else {
+					uni.navigateTo({
+						url: "../order/order"
+					})
+				}
 			},
 			getUserInfo() {
-				// 必须是在用户已经授权的情况下调用，
+				let that = this
 				wx.getUserInfo({
 					success(res) {
-						const userInfo = res.userInfo //userInfo里面存储用户的基本信息
-						const nickName = userInfo.nickName
-						const avatarUrl = userInfo.avatarUrl
-						// const gender = userInfo.gender // 性别 0：未知、1：男、2：女
-						// const province = userInfo.province
-						// const city = userInfo.city
-						// const country = userInfo.country
-						const encryptedData = res.encryptedData //包括敏感数据在内的完整用户信息的加密数据
-						const rawData = res.rawData //不包括敏感信息的原始数据字符串，用于计算签名
-						const signature = res.signature //使用 sha1( rawData + sessionkey ) 得到字符串，用于校验用户信息
-						console.log(res);
-						
+						const userInfo = res.userInfo
+						that.userName = userInfo.nickName
+						that.userAvatar = userInfo.avatarUrl
+						// console.log(res);
 						wx.login({
-						  success (res) {
-						    if (res.code) {
-								console.log(res.code);
-							  uni.request({
-							      url: 'https://localhost:7001/getOpenId',
-							      data: {code:res.code},
-							      success: (res) => {
-							          console.log(res);
-							      }
-							  });
-						    } else {
-						      console.log('登录失败！' + res.errMsg)
-						    }
-						  }
+							success(res) {
+								if (res.code) {
+									// console.log(res.code);
+									uni.request({
+										url: 'http://localhost:7001/getOpenId',
+										method: "POST",
+										data: {
+											code: res.code
+										},
+										success: (res) => {
+											wx.setStorageSync('token', res.data.sig)
+										}
+									});
+								} else {
+									console.log('登录失败！' + res.errMsg)
+								}
+							}
 						})
 					},
 					fail(err) {
@@ -117,13 +120,16 @@
 	.avatar-img {
 		width: 100%;
 		height: 100%;
+		border-radius: 50%;
 	}
 
 	.header-user {
-		width: 300rpx;
+		width: 200rpx;
+		height: 150rpx;
 		margin-left: 25rpx;
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
 	}
 
 	.header-user span {
@@ -133,6 +139,12 @@
 	.header-user span:nth-child(2),
 	.header-user span:nth-child(3) {
 		font-size: 12px;
+	}
+
+	.user-title {
+		background-color: transparent;
+		color: rgb(255, 101, 18);
+		padding: 0;
 	}
 
 	.self-bar {
