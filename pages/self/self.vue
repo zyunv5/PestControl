@@ -43,7 +43,6 @@
 		methods: {
 			goOrder() {
 				const token = wx.getStorageSync('token');
-				console.log("goOrder"+token)
 				if (!token) {
 					uni.showToast({
 						title: "请先登录",
@@ -62,11 +61,9 @@
 						const userInfo = res.userInfo
 						that.userName = userInfo.nickName
 						that.userAvatar = userInfo.avatarUrl
-						// console.log(res);
 						wx.login({
 							success(res) {
 								if (res.code) {
-									// console.log(res.code);
 									uni.request({
 										url: 'http://localhost:7001/getOpenId',
 										method: "POST",
@@ -84,7 +81,6 @@
 						})
 					},
 					fail(err) {
-						//在用户未授权过的情况下调用此接口，将不再出现授权弹窗,会执行该fail函数
 						console.log("用户未授权")
 					}
 				})

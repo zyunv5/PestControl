@@ -1936,9 +1936,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 15:
-/*!*******************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/store/index.js ***!
-  \*******************************************************************/
+/*!****************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/store/index.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9158,9 +9158,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 4:
-/*!***************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json ***!
-  \***************************************************************/
+/*!************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/pages.json ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9169,9 +9169,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 47:
-/*!************************************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/node_modules/dayjs/dayjs.min.js ***!
-  \************************************************************************************/
+/*!*********************************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/node_modules/dayjs/dayjs.min.js ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10177,9 +10177,9 @@ module.exports = JSON.parse("{\"_from\":\"@dcloudio/uni-stat@next\",\"_id\":\"@d
 /***/ }),
 
 /***/ 7:
-/*!*******************************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json?{"type":"stat"} ***!
-  \*******************************************************************************/
+/*!****************************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/pages.json?{"type":"stat"} ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10189,14 +10189,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 8:
-/*!********************************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json?{"type":"style"} ***!
-  \********************************************************************************/
+/*!*****************************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/pages.json?{"type":"style"} ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "虫杀杀" }, "pages/self/self": { "navigationBarTitleText": "我的", "enablePullDownRefresh": false }, "pages/order/order": { "navigationBarTitleText": "订单", "enablePullDownRefresh": false }, "pages/appointment/appointment": { "navigationBarTitleText": "预约", "enablePullDownRefresh": false }, "pages/explain/explain": { "navigationBarTitleText": "费用说明", "enablePullDownRefresh": false }, "pages/projects/projects": { "navigationBarTitleText": "主营项目", "enablePullDownRefresh": false }, "pages/disinfestation/disinfestation": { "navigationBarTitleText": "", "enablePullDownRefresh": false }, "pages/neighbor/neighbor": { "navigationBarTitleText": "邻居计划", "enablePullDownRefresh": false }, "pages/detail/detail": { "navigationBarTitleText": "", "enablePullDownRefresh": false } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "虫杀杀", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "虫杀杀", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/self/self": { "navigationBarTitleText": "我的", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/order/order": { "navigationBarTitleText": "订单", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/appointment/appointment": { "navigationBarTitleText": "预约", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/explain/explain": { "navigationBarTitleText": "费用说明", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/projects/projects": { "navigationBarTitleText": "主营项目", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/disinfestation/disinfestation": { "navigationBarTitleText": "", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/neighbor/neighbor": { "navigationBarTitleText": "邻居计划", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/detail/detail": { "navigationBarTitleText": "", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "虫杀杀", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ })
 

@@ -89,11 +89,21 @@
 					{noon:"下午",time:"21:00",active:false},
 					],
 					area:"选择您所在社区",
-					bgMap:["西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","平谷区","怀柔区","密云县","延庆县"],
+					bgMap:["东城区","西城区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","平谷区","怀柔区","密云县","延庆县"],
 					areaColor:false,
 					user:"",
 					phone:"",
 					address:""
+			}
+		},
+		created() {
+			const token = wx.getStorageSync('token');
+			if (!token) {
+				uni.showToast({
+					title: "请先登录再进行预约",
+					icon: "none",
+					duration:3000
+				})
 			}
 		},
 		methods: {
@@ -176,18 +186,28 @@
 						address:this.address,
 						time:`${this.year}-${m}-${d} ${timeActive[0].time}:00`
 					}
-					uni.request({
-					    url: 'http://localhost:7001/submit',
-						method:"POST",
-						 header: {
-						        'content-type': 'application/json'
-						    },
-					    data: {form:form},
-						dataType:'json',
-					    success: (res) => {
-					        console.log(res);
-					    }
-					});
+					const token = wx.getStorageSync('token');
+					if (!token) {
+						uni.showToast({
+							title: "请先登录再进行预约",
+							icon: "none",
+							duration:1500
+						})
+					}else{
+						uni.request({
+						    url: 'http://localhost:7001/submit',
+							method:"POST",
+							 header: {
+							        'content-type': 'application/json'
+							    },
+						    data: {token:token,form:form},
+							dataType:'json',
+						    success: (res) => {
+						        console.log(res);
+						    }
+						});
+					}
+				
 				}
 			 },
 			 //弹出弹框
