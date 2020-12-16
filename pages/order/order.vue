@@ -9,6 +9,7 @@
 				<span class="list-title">{{item.project}}</span>
 				<span class="list-time">下单时间:{{item.orderTime}}</span>
 				<span class="list-time">安心家服务:{{item.serviceTime}}</span>
+				<img class="list-img" src="../../static/cancel.png" alt="" mode="widthFix" @click.stop="cancelOrder(item.id)">
 			</view>
 			<image class="content-img" src="../../static/list-bottom.png" mode="widthFix"></image>
 		</scroll-view>
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+		import urlConfig from '../../common/config.js'
 	export default {
 		data() {
 			return {
@@ -47,7 +49,7 @@
 		beforeCreate() {
 			const token=wx.getStorageSync("token")
 			uni.request({
-				url: 'http://localhost:7001/getUserOrder',
+				url: urlConfig+'getUserOrder',
 				method: "GET",
 				data: {
 					token: token
@@ -65,6 +67,20 @@
 				uni.navigateTo({
 					url: `../detail/detail?id=${id}`
 				})
+			},
+			cancelOrder(id){
+				wx.showModal({
+				  content: '您确定要取消订单吗？',
+				  success (res) {
+				    if (res.confirm) {
+				      // console.log('用户点击确定')
+							console.log(id)
+				    } else if (res.cancel) {
+				      console.log('用户点击取消')
+				    }
+				  }
+				})
+
 			}
 		}
 	}
@@ -124,6 +140,7 @@
 		padding-top: 40rpx;
 		padding-left: 40rpx;
 		margin-bottom: 20rpx;
+		position: relative;
 	}
 
 	.list-title {
@@ -133,6 +150,15 @@
 	.list-time {
 		font-size: 25rpx;
 		color: rgb(209, 209, 209);
+	}
+	
+	.list-img{
+		position: absolute;
+		width: 50rpx;
+		height: 50rpx;
+		top:50%;
+		right: 5%;
+		transform: translate(0,-50%);
 	}
 
 	.content-img {

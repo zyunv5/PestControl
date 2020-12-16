@@ -33,6 +33,7 @@
 	</view>
 </template>
 <script>
+	import urlConfig from '../../common/config.js'
 	export default {
 		data() {
 			return {
@@ -40,9 +41,17 @@
 				userAvatar: "../../static/icon.png"
 			}
 		},
+		created() {
+			const nameStorage = wx.getStorageSync('userName');
+			const avatarStorage = wx.getStorageSync('userAvatar');
+			if (nameStorage && avatarStorage) {
+				this.userName = nameStorage
+				this.userAvatar = avatarStorage
+			}
+		},
 		methods: {
 			goOrder() {
-				const token = wx.getStorageSync('token');
+				const token = wx.getStorageSync("token")
 				if (!token) {
 					uni.showToast({
 						title: "请先登录",
@@ -61,11 +70,13 @@
 						const userInfo = res.userInfo
 						that.userName = userInfo.nickName
 						that.userAvatar = userInfo.avatarUrl
+						wx.setStorageSync('userName', userInfo.nickName)
+						wx.setStorageSync('userAvatar', userInfo.avatarUrl)
 						wx.login({
 							success(res) {
 								if (res.code) {
 									uni.request({
-										url: 'http://localhost:7001/getOpenId',
+										url: urlConfig+'getOpenId',
 										method: "POST",
 										data: {
 											code: res.code

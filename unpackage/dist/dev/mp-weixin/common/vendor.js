@@ -1806,6 +1806,25 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
+/***/ 101:
+/*!*********************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/common/config.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var url_config = "";
+
+if (true) {
+  // 开发环境
+  url_config = 'http://localhost:7001/';
+} else {}var _default =
+
+url_config;exports.default = _default;
+
+/***/ }),
+
 /***/ 14:
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -1936,9 +1955,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 15:
-/*!****************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/store/index.js ***!
-  \****************************************************************/
+/*!*******************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/store/index.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9157,10 +9176,21 @@ module.exports = g;
 
 /***/ }),
 
+/***/ 37:
+/*!**********************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/static/cancel.png ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,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"
+
+/***/ }),
+
 /***/ 4:
-/*!************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/pages.json ***!
-  \************************************************************/
+/*!***************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9168,10 +9198,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 47:
-/*!*********************************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/node_modules/dayjs/dayjs.min.js ***!
-  \*********************************************************************************/
+/***/ 48:
+/*!************************************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/node_modules/dayjs/dayjs.min.js ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10177,9 +10207,9 @@ module.exports = JSON.parse("{\"_from\":\"@dcloudio/uni-stat@next\",\"_id\":\"@d
 /***/ }),
 
 /***/ 7:
-/*!****************************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/pages.json?{"type":"stat"} ***!
-  \****************************************************************************/
+/*!*******************************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json?{"type":"stat"} ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10189,14 +10219,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 8:
-/*!*****************************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/pages.json?{"type":"style"} ***!
-  \*****************************************************************************/
+/*!********************************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json?{"type":"style"} ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "虫杀杀", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/self/self": { "navigationBarTitleText": "我的", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/order/order": { "navigationBarTitleText": "订单", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/appointment/appointment": { "navigationBarTitleText": "预约", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/explain/explain": { "navigationBarTitleText": "费用说明", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/projects/projects": { "navigationBarTitleText": "主营项目", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/disinfestation/disinfestation": { "navigationBarTitleText": "", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/neighbor/neighbor": { "navigationBarTitleText": "邻居计划", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/detail/detail": { "navigationBarTitleText": "", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "虫杀杀", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "虫杀杀" }, "pages/self/self": { "navigationBarTitleText": "我的", "enablePullDownRefresh": false }, "pages/order/order": { "navigationBarTitleText": "订单", "enablePullDownRefresh": false }, "pages/appointment/appointment": { "navigationBarTitleText": "预约", "enablePullDownRefresh": false }, "pages/explain/explain": { "navigationBarTitleText": "费用说明", "enablePullDownRefresh": false }, "pages/projects/projects": { "navigationBarTitleText": "主营项目", "enablePullDownRefresh": false }, "pages/disinfestation/disinfestation": { "navigationBarTitleText": "", "enablePullDownRefresh": false }, "pages/neighbor/neighbor": { "navigationBarTitleText": "邻居计划", "enablePullDownRefresh": false }, "pages/detail/detail": { "navigationBarTitleText": "", "enablePullDownRefresh": false } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "虫杀杀", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ })
 

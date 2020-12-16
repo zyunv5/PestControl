@@ -61,6 +61,7 @@
 	padding-top: 40rpx;
 	padding-left: 40rpx;
 	margin-bottom: 20rpx;
+	position: relative;
 }
 .list-title {
 	font-weight: bold;
@@ -68,6 +69,15 @@
 .list-time {
 	font-size: 25rpx;
 	color: rgb(209, 209, 209);
+}
+.list-img{
+	position: absolute;
+	width: 50rpx;
+	height: 50rpx;
+	top:50%;
+	right: 5%;
+	-webkit-transform: translate(0,-50%);
+	        transform: translate(0,-50%);
 }
 .content-img {
 	margin-top: 40rpx;
