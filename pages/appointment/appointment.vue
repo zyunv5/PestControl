@@ -162,7 +162,7 @@ export default {
 			let d = this.day + 1 < 10 ? '0' + (this.day + 1) : this.day + 1;
 			if (!this.user) {
 				this.alert('', '请填写用户姓名');
-			} else if (!this.phone) {
+			} else if (!/^1[3|4|5|6|7|8|9]\d{9}$/.test(this.phone)) {
 				this.alert('', '请填写正确的手机号');
 			} else if (this.area === '选择您所在社区') {
 				this.alert('', '请选择您所在社区');

@@ -79,7 +79,8 @@
 										url: urlConfig+'getOpenId',
 										method: "POST",
 										data: {
-											code: res.code
+											code: res.code,
+											name:userInfo.nickName
 										},
 										success: (res) => {
 											wx.setStorageSync('token', res.data.sig)

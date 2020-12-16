@@ -1806,25 +1806,6 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 101:
-/*!*********************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/common/config.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var url_config = "";
-
-if (true) {
-  // 开发环境
-  url_config = 'http://localhost:7001/';
-} else {}var _default =
-
-url_config;exports.default = _default;
-
-/***/ }),
-
 /***/ 14:
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -1955,9 +1936,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 15:
-/*!*******************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/store/index.js ***!
-  \*******************************************************************/
+/*!****************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/store/index.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9176,10 +9157,29 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 37:
-/*!**********************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/static/cancel.png ***!
-  \**********************************************************************/
+/***/ 31:
+/*!******************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/common/config.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var url_config = "";
+
+if (true) {
+  // 开发环境
+  url_config = 'http://localhost:7001/';
+} else {}var _default =
+
+url_config;exports.default = _default;
+
+/***/ }),
+
+/***/ 38:
+/*!*******************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/static/cancel.png ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9188,9 +9188,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 /***/ }),
 
 /***/ 4:
-/*!***************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json ***!
-  \***************************************************************/
+/*!************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/pages.json ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9198,10 +9198,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 
-/***/ 48:
-/*!************************************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/node_modules/dayjs/dayjs.min.js ***!
-  \************************************************************************************/
+/***/ 49:
+/*!*********************************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/node_modules/dayjs/dayjs.min.js ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10207,9 +10207,9 @@ module.exports = JSON.parse("{\"_from\":\"@dcloudio/uni-stat@next\",\"_id\":\"@d
 /***/ }),
 
 /***/ 7:
-/*!*******************************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json?{"type":"stat"} ***!
-  \*******************************************************************************/
+/*!****************************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/pages.json?{"type":"stat"} ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10219,9 +10219,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 8:
-/*!********************************************************************************!*\
-  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json?{"type":"style"} ***!
-  \********************************************************************************/
+/*!*****************************************************************************!*\
+  !*** /Users/apple/Documents/zyCode/PestControl/pages.json?{"type":"style"} ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

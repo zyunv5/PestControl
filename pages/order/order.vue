@@ -5,10 +5,9 @@
 			<view class="switch-list switch-end" :class="{'switch-select select-right':isActive===1}" @click="changeTab(1)">已完成的订单</view>
 		</view>
 		<scroll-view scroll-y="true" class="order-content" v-if="isActive===0">
-			<view class="content-list" v-for="item in listData" :key="item.id" @click="seeDetail(item.id)">
-				<span class="list-title">{{item.project}}</span>
-				<span class="list-time">下单时间:{{item.orderTime}}</span>
-				<span class="list-time">安心家服务:{{item.serviceTime}}</span>
+			<view class="content-list" v-for="item in listData" :key="item.id" @click="seeDetail(item)">
+				<span class="list-title">安心家服务</span>
+				<span class="list-time">下单时间:{{item.createdAt}}</span>
 				<img class="list-img" src="../../static/cancel.png" alt="" mode="widthFix" @click.stop="cancelOrder(item.id)">
 			</view>
 			<image class="content-img" src="../../static/list-bottom.png" mode="widthFix"></image>
@@ -25,37 +24,26 @@
 </template>
 
 <script>
-		import urlConfig from '../../common/config.js'
+	import urlConfig from '../../common/config.js'
+	import dayjs from "dayjs"
 	export default {
 		data() {
 			return {
 				isActive: 0,
-				listData:[
-					{
-						id:1,
-						project:"安心家服务",
-						orderTime:"2020/11/5 15:32",
-						serviceTime:"2020/11/6 15:00"
-					},
-					{
-						id:2,
-						project:"安心家服务",
-						orderTime:"2020/11/5 15:35",
-						serviceTime:"2020/11/6 18:00"
-					},
-				]
+				listData: []
 			}
 		},
-		beforeCreate() {
-			const token=wx.getStorageSync("token")
+		created() {
+			let that = this;
+			const token = wx.getStorageSync("token")
 			uni.request({
-				url: urlConfig+'getUserOrder',
+				url: urlConfig + 'getUserOrder',
 				method: "GET",
 				data: {
 					token: token
 				},
 				success: (res) => {
-					console.log(res);
+					that.orderSort(res.data.data)
 				}
 			});
 		},
@@ -63,24 +51,46 @@
 			changeTab(num) {
 				this.isActive = num
 			},
-			seeDetail(id){
+			seeDetail(item) {
+				const newItem=JSON.stringify(item)
 				uni.navigateTo({
-					url: `../detail/detail?id=${id}`
+					url: `../detail/detail?item=${newItem}`
 				})
 			},
-			cancelOrder(id){
+			cancelOrder(id) {
 				wx.showModal({
-				  content: '您确定要取消订单吗？',
-				  success (res) {
-				    if (res.confirm) {
-				      // console.log('用户点击确定')
+					content: '您确定要取消订单吗？',
+					success(res) {
+						if (res.confirm) {
+							const token = wx.getStorageSync("token")
+							uni.request({
+								url: urlConfig + 'cancelOrder',
+								method: "POST",
+								data: {
+									token: token,
+									orderId:id
+								},
+								header: {
+									'content-type': 'application/json'
+								},
+								dataType: 'json',
+								success: (res) => {
+									console.log(res);
+								}
+							});
 							console.log(id)
-				    } else if (res.cancel) {
-				      console.log('用户点击取消')
-				    }
-				  }
+						} else if (res.cancel) {
+							console.log('用户点击取消')
+						}
+					}
 				})
-
+			},
+			orderSort(data) {
+				const newData = data.map(item => {
+					item.createdAt = dayjs(item.createdAt).format("YYYY-MM-DD HH:mm:ss")
+					return item;
+				})
+				this.listData = newData
 			}
 		}
 	}
@@ -151,14 +161,14 @@
 		font-size: 25rpx;
 		color: rgb(209, 209, 209);
 	}
-	
-	.list-img{
+
+	.list-img {
 		position: absolute;
 		width: 50rpx;
 		height: 50rpx;
-		top:50%;
+		top: 50%;
 		right: 5%;
-		transform: translate(0,-50%);
+		transform: translate(0, -50%);
 	}
 
 	.content-img {

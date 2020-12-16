@@ -18,15 +18,20 @@
 <script>
 	export default {
 		onLoad(option) {
-			// console.log(option.id); //打印出上个页面传递的参数。
+			const queryItem=JSON.parse(option.item)
+			this.name=queryItem.userName;
+			this.phone=queryItem.userPhone;
+			this.area=queryItem.userArea;
+			this.address=queryItem.userAddress;
+			this.time=queryItem.createdAt;
 		},
 		data() {
 			return {
-				name:"张先生",
-				phone:"13600001111",
-				area:"金台北里社区",
-				address:"金台北街2-3-606",
-				time:"2020年12月32日 上午11：00"
+				name:"",
+				phone:"",
+				area:"",
+				address:"",
+				time:""
 			}
 		},
 		methods: {
