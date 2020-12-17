@@ -8,6 +8,7 @@
 			<view class="content-list" v-for="item in listData" :key="item.id" @click="seeDetail(item)">
 				<span class="list-title">安心家服务</span>
 				<span class="list-time">下单时间:{{item.createdAt}}</span>
+				<span class="list-time">安心家服务:{{item.visitedAt}}</span>
 				<img class="list-img" src="../../static/cancel.png" alt="" mode="widthFix" @click.stop="cancelOrder(item.id)">
 			</view>
 			<image class="content-img" src="../../static/list-bottom.png" mode="widthFix"></image>
@@ -88,6 +89,7 @@
 			orderSort(data) {
 				const newData = data.map(item => {
 					item.createdAt = dayjs(item.createdAt).format("YYYY-MM-DD HH:mm:ss")
+					item.visitedAt = dayjs(item.visitedAt).format("YYYY-MM-DD HH:mm:ss")
 					return item;
 				})
 				this.listData = newData

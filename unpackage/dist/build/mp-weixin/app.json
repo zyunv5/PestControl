@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/self/self",
+    "pages/order/order",
+    "pages/appointment/appointment",
+    "pages/explain/explain",
+    "pages/projects/projects",
+    "pages/disinfestation/disinfestation",
+    "pages/neighbor/neighbor",
+    "pages/detail/detail"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "虫杀杀",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/homeBefore.png",
+        "selectedIconPath": "static/homeAfter.png"
+      },
+      {
+        "pagePath": "pages/appointment/appointment",
+        "text": "预约",
+        "iconPath": "static/appointmentBefore.png",
+        "selectedIconPath": "static/appointmentAfter.png"
+      },
+      {
+        "pagePath": "pages/self/self",
+        "text": "我的",
+        "iconPath": "static/meBefore.png",
+        "selectedIconPath": "static/meAfter.png"
+      }
+    ]
+  },
+  "permission": {},
+  "uniStatistics": {
+    "enable": true
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}
