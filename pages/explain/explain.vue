@@ -2,8 +2,8 @@
 	<!-- 费用说明 -->
 	<view class="explain">
 		<image class="explain-logo" src="https://statich.yidianzixun.com/public/file/1606877321188/explain_logo.png" mode="widthFix"></image>
-		<image class="explain-price1" src="https://statich.yidianzixun.com/public/file/1606877321188/price1.png" mode="widthFix"></image>
-		<image class="explain-price2" src="https://statich.yidianzixun.com/public/file/1606877321188/price2.png" mode="widthFix"></image>
+		<image class="explain-price1" src="https://statich.yidianzixun.com/public/file/1608556303977/price1.png" mode="widthFix"></image>
+		<image class="explain-price2" src="https://statich.yidianzixun.com/public/file/1608556303977/price2.png" mode="widthFix"></image>
 		<button class="explain-button" @click="goHome">返 回</button>
 	</view>
 </template>
@@ -26,7 +26,7 @@
 		height: auto;
 		position: relative;
 		font-size: 0;
-		background-color: rgb(234, 234, 234);
+		/* background-color: rgb(234, 234, 234); */
 		padding: 20rpx 4% 20rpx 4%;
 		box-sizing: border-box;
 	}

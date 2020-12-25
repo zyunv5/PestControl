@@ -3,9 +3,9 @@
 	<view class="project">
 		<view class="project-list">
 			<view class="list-title">服务类目名单</view>
-			<image @click="goDisinfestation" src="https://statich.yidianzixun.com/public/file/1606288248012/project1.png" mode="widthFix"></image>
-			<image src="https://statich.yidianzixun.com/public/file/1606288248012/project2.png" mode="widthFix"></image>
-			<image src="https://statich.yidianzixun.com/public/file/1606288248012/project3.png" mode="widthFix"></image>
+			<image @click="goDisinfestation" src="https://statich.yidianzixun.com/public/file/1608454978834/project1.png" mode="widthFix"></image>
+			<image src="https://statich.yidianzixun.com/public/file/1608454978834/project2.png" mode="widthFix"></image>
+			<image src="https://statich.yidianzixun.com/public/file/1608454978834/project3.png" mode="widthFix"></image>
 		</view>
 	</view>
 </template>
@@ -25,7 +25,6 @@
 <style scoped>
 	.project {
 		width: 100%;
-		background-color: rgb(234, 234, 234);
 		padding-top: 30rpx;
 	}
 

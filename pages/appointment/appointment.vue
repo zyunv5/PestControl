@@ -3,12 +3,12 @@
 		<image class="apponitment-title" src="../../static/appointment-title.png" mode="aspectFit"></image>
 		<image class="apponitment-title-form" src="../../static/form_info.png" mode="widthFix"></image>
 		<view class="apponitment-form">
-			<input class="form-list" placeholder-style="color:#999999;" type="text" placeholder="请填写您的姓名" v-model="user" />
-			<input class="form-list" placeholder-style="color:#999999;" type="text" placeholder="请填写您的联系方式" v-model="phone" />
+			<input class="form-list" placeholder-style="color:#e5e5e5;" type="text" placeholder="请填写您的姓名" v-model="user" />
+			<input class="form-list" placeholder-style="color:#e5e5e5;" type="text" placeholder="请填写您的联系方式" v-model="phone" />
 			<picker class="form-list" mode="selector" :value="area" :range="bgMap" @change="areaChange">
-				<view class="picker" :class="[areaColor ? 'text-active' : '']">{{ area }}</view>
+				<view class="pickerArea" :class="[areaColor ? 'text-active' : '']">{{ area }}</view>
 			</picker>
-			<textarea class="form-textarea" placeholder-style="color:#999999;" placeholder="请填写详细的楼号、楼层、门牌号等信息" v-model="address" />
+			<textarea class="form-textarea" placeholder-style="color:#e5e5e5;" placeholder="请填写详细的楼号、楼层、门牌号等信息" v-model="address" />
 		</view>
 		<image class="apponitment-title-time" src="../../static/appointment_time.png" mode="widthFix"></image>
 		<view class="apponitment-time">
@@ -32,7 +32,7 @@
 			</view>
 		</view>
 		<view class="apponitment-day">
-			<view class="day-item" :class="[item.active ? 'day-item-active' : '']" v-for="item in dayTime" :key="item.time" @click="changeTime(item)">
+			<view class="day-item" :class="{ 'day-item-active': item.active, 'day-item-full': item.isFull }" v-for="item in dayTime" :key="item.time" @click="changeTime(item)">
 				<view class="item-text">{{ item.noon }}</view>
 				<view class="item-text">{{ item.time }}</view>
 			</view>
@@ -71,21 +71,29 @@ export default {
 			day,
 			days,
 			dayTime: [
-				{ noon: '上午', time: '09:00', active: false },
-				{ noon: '上午', time: '11:00', active: false },
-				{ noon: '下午', time: '13:00', active: false },
-				{ noon: '下午', time: '15:00', active: false },
-				{ noon: '下午', time: '17:00', active: false },
-				{ noon: '下午', time: '19:00', active: false },
-				{ noon: '下午', time: '21:00', active: false }
+				{ noon: '上午', time: '09:00', active: false, isFull: false },
+				{ noon: '上午', time: '11:00', active: false, isFull: false },
+				{ noon: '下午', time: '13:00', active: false, isFull: false },
+				{ noon: '下午', time: '15:00', active: false, isFull: false },
+				{ noon: '下午', time: '17:00', active: false, isFull: false },
+				{ noon: '下午', time: '19:00', active: false, isFull: false },
+				{ noon: '下午', time: '21:00', active: false, isFull: false }
 			],
-			area: '选择您所在社区',
-			bgMap: ['东城区', '西城区', '朝阳区', '丰台区', '石景山区', '海淀区', '门头沟区', '房山区', '通州区', '顺义区', '昌平区', '大兴区', '平谷区', '怀柔区', '密云县', '延庆县'],
+			area: '选择您所在地区',
+			// bgMap: ['东城区', '西城区', '朝阳区', '丰台区', '石景山区', '海淀区', '门头沟区', '房山区', '通州区', '顺义区', '昌平区', '大兴区', '平谷区', '怀柔区', '密云县', '延庆县'],
+			bgMap: ['朝阳区', '海淀区'],
 			areaColor: false,
 			user: '',
 			phone: '',
-			address: ''
+			address: '',
+			id: ''
 		};
+	},
+	computed: {
+		detail() {
+			let state = this.$store.state.detail;
+			return state;
+		}
 	},
 	onShow() {
 		const token = wx.getStorageSync('token');
@@ -96,6 +104,31 @@ export default {
 				duration: 3000
 			});
 		}
+		if (JSON.stringify(this.detail) !== '{}') {
+			const queryItem = JSON.parse(this.detail);
+			const date=dayjs(queryItem.time)
+			console.log(queryItem)
+			this.year=date.year()
+			this.month=date.month()
+			this.day=date.date()-1
+			console.log(date.year(),date.month(),date.date())
+			this.dayTime.filter(item=>{
+				if(item.time===`${date.hour()}:00`){
+					item.active=true
+				}
+			})
+			this.id = queryItem.id;
+			this.areaColor=true;
+			this.user = queryItem.name;
+			this.phone = queryItem.phone;
+			this.address = queryItem.address;
+			this.area = queryItem.area;
+		}
+	},
+	created(){},
+	onHide() {
+		this.$store.dispatch('clearDetail');
+		this.resetForm()
 	},
 	methods: {
 		// 更改年份
@@ -140,6 +173,13 @@ export default {
 		},
 		// 选中时间
 		changeTime(item) {
+			if (item.isFull) {
+				uni.showToast({
+					title: '该时间段已约满，请更换其他时间',
+					icon: 'none'
+				});
+				return;
+			}
 			this.dayTime.forEach(item => (item.active = false));
 			item.active = true;
 		},
@@ -154,6 +194,17 @@ export default {
 			let newDay = addDay.date();
 			this.monthChange('', newMonth);
 			this.dayChange('', newDay);
+			console.log(addDay.format("YYYY-MM-DD"))
+			uni.request({
+				url: urlConfig + 'getTime',
+				method: 'GET',
+				header: {
+					'content-type': 'application/json'
+				},
+				success: res => {
+					console.log(res);
+				}
+			})
 		},
 		//提交表单
 		submitForm() {
@@ -188,28 +239,62 @@ export default {
 						duration: 1500
 					});
 				} else {
-					uni.request({
-						url: urlConfig + 'submit',
-						method: 'POST',
-						header: {
-							'content-type': 'application/json'
-						},
-						data: { token: token, form: form },
-						dataType: 'json',
-						success: res => {
-							console.log(res);
-							if (res.data.status === 1) {
-								uni.showToast({
-									title: '添加成功',
-									icon: 'success'
-								});
-
-								uni.navigateTo({
-									url: '../order/order'
-								});
+					if(this.id){
+						form.id=this.id;
+						uni.request({
+							url: urlConfig + 'update',
+							method: 'POST',
+							header: {
+								'content-type': 'application/json'
+							},
+							data: { token: token, form: form },
+							dataType: 'json',
+							success: res => {
+								console.log(res);
+								if (res.data.status === 1) {
+									uni.showToast({
+										title: '添加成功',
+										icon: 'success'
+									});
+									uni.navigateTo({
+										url: '../order/order'
+									});
+								} else {
+									uni.showToast({
+										title: '提交失败，请检查网络环境',
+										icon: 'none'
+									});
+								}
 							}
-						}
-					});
+						});
+					}else{
+						uni.request({
+							url: urlConfig + 'submit',
+							method: 'POST',
+							header: {
+								'content-type': 'application/json'
+							},
+							data: { token: token, form: form },
+							dataType: 'json',
+							success: res => {
+								console.log(res);
+								if (res.data.status === 1) {
+									uni.showToast({
+										title: '添加成功',
+										icon: 'success'
+									});
+									uni.navigateTo({
+										url: '../order/order'
+									});
+								} else {
+									uni.showToast({
+										title: '提交失败，请检查网络环境',
+										icon: 'none'
+									});
+								}
+							}
+						});
+					}
 				}
 			}
 		},
@@ -253,9 +338,7 @@ export default {
 			this.dayTime.forEach(item => (item.active = false));
 		}
 	},
-	mounted() {
-		// console.log(dayjs('2020-02').daysInMonth())
-	}
+	
 };
 </script>
 
@@ -263,7 +346,6 @@ export default {
 .apponitment {
 	box-sizing: border-box;
 	width: 100%;
-	background-color: rgb(234, 234, 234);
 	padding: 20rpx 4% 0 4%;
 }
 .apponitment-title {
@@ -293,11 +375,12 @@ export default {
 	background-color: #fff;
 	border-radius: 10rpx;
 	padding-left: 30rpx;
-	font-size: 25rpx;
+	font-size: 28rpx;
 	margin: 0 auto;
 }
-.form-list .picker {
+.form-list .pickerArea {
 	line-height: 78rpx;
+	color: #e5e5e5;
 }
 .form-textarea {
 	box-sizing: border-box;
@@ -307,7 +390,7 @@ export default {
 	border-radius: 10rpx;
 	padding-top: 20rpx;
 	padding-left: 30rpx;
-	font-size: 25rpx;
+	font-size: 28rpx;
 	margin: 0 auto;
 }
 .apponitment-title-time {
@@ -338,8 +421,8 @@ export default {
 	right: 8%;
 	top: 50%;
 	transform: translate(0, -50%);
-	width: 30rpx;
-	height: 20rpx;
+	width: 25rpx;
+	height: 15rpx;
 }
 .time-year {
 	width: 258rpx;
@@ -381,6 +464,11 @@ export default {
 	color: #fff;
 	border: 1rpx solid rgb(255, 101, 16);
 }
+.day-item-full {
+	background-color: rgb(226, 226, 226);
+	color: #fff;
+	border: 1rpx solid rgb(192, 192, 192);
+}
 .apponitment-submit {
 	width: 675rpx;
 	height: 96rpx;
@@ -391,10 +479,7 @@ export default {
 	border-radius: 10rpx;
 	margin: 0 auto 20rpx;
 }
-.picker {
-	color: #999999;
-}
-.text-active {
+.form-list .text-active {
 	color: #000;
 }
 </style>

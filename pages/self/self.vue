@@ -17,18 +17,18 @@
 				</view>
 				<view>我的订单</view>
 			</view>
-			<view class="bottom-list">
+			<!-- <view class="bottom-list">
 				<view class="customer-icon">
 					<image src="../../static/i2.png" mode="widthFix"></image>
 				</view>
 				<view>联系客服</view>
-			</view>
-			<view class="bottom-list">
+			</view> -->
+			<!-- <view class="bottom-list">
 				<view class="question-icon">
 					<image src="../../static/i3.png" mode="widthFix"></image>
 				</view>
 				<view>常见问题</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>
@@ -106,7 +106,6 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column;
-		background-color: rgb(234, 234, 234);
 	}
 
 	.self-header {

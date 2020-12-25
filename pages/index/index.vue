@@ -5,22 +5,22 @@
 			<image src="https://statich.yidianzixun.com/public/file/1606285599416/init.jpg" alt="" mode="scaleToFill">
 		</view>
 		<scroll-view class="content" v-show="initState" scroll-y>
-			<image class="content-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1606803976959/index.jpg"
+			<image class="content-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1608456013258/index.png"
 			 mode="widthFix"></image>
 			<view class="content-list">
 				<image @click="goAppointment" src="https://statich.yidianzixun.com/public/file/1606286771148/p1.png" mode="widthFix"></image>
 				<image @click="goExplain" src="https://statich.yidianzixun.com/public/file/1606286771148/p2.png" mode="widthFix"></image>
 				<image @click="goProjects" src="https://statich.yidianzixun.com/public/file/1606286771148/p3.png" mode="widthFix"></image>
 			</view>
-			<swiper class="content-swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+			<swiper class="content-swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="500">
 				<swiper-item>
 					<view class="swiper-item" @click="goNeightbor">
 						<image src="https://statich.yidianzixun.com/public/file/1605754071093/swiper1.png" mode="widthFix"></image>
 					</view>
 				</swiper-item>
 				<swiper-item>
-					<view class="swiper-item">
-						<image src="https://statich.yidianzixun.com/public/file/1605754071093/swiper1.png" mode="widthFix"></image>
+					<view class="swiper-item" @click="goWeekday">
+						<image src="https://statich.yidianzixun.com/public/file/1608555853628/swiper2.png" mode="widthFix"></image>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -78,6 +78,11 @@
 			goNeightbor() {
 				uni.navigateTo({
 					url: "../neighbor/neighbor"
+				})
+			},
+			goWeekday(){
+				uni.navigateTo({
+					url: "../weekdayDiscount/weekdayDiscount"
 				})
 			}
 		}

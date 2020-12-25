@@ -4,7 +4,7 @@
 	        box-sizing: border-box;
 	width: 100%;
 	height: auto;
-	background-color: rgb(234, 234, 234);
+	/* background-color: rgb(234, 234, 234); */
 	padding: 20rpx 4% 0 4%;
 }
 .detail-logo {
@@ -50,7 +50,7 @@
 	width: 700rpx;
 	height: 78rpx;
 	line-height: 78rpx;
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 	-webkit-border-radius: 10rpx;
 	        border-radius: 10rpx;
 	margin-bottom: 60rpx;
@@ -62,13 +62,13 @@
 	height: 98rpx;
 	margin-bottom: 21rpx;
 	background-color: rgb(21, 23, 44);
-	color: #FFFFFF;
+	color: #ffffff;
 }
 .detail-cancel {
 	width: 695rpx;
 	height: 98rpx;
 	margin-bottom: 21rpx;
 	background-color: rgb(255, 78, 0);
-	color: #FFFFFF;
+	color: #ffffff;
 }
 

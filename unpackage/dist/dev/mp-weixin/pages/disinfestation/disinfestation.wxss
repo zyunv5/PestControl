@@ -5,7 +5,6 @@
 	position: relative;
 	overflow: scroll;
 	font-size: 0;
-	background-color: rgb(234, 234, 234);
 	-webkit-overflow-scrolling: touch;
 }
 .disinfestation-bg.data-v-49e73486 {

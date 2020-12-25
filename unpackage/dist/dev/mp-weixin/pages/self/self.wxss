@@ -9,7 +9,6 @@
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
 	        flex-direction: column;
-	background-color: rgb(234, 234, 234);
 }
 .self-header.data-v-6cbfa486 {
 	-webkit-box-sizing: border-box;

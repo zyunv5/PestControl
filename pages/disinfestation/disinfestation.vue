@@ -1,7 +1,7 @@
 <template>
 	<!-- 主营项目-虫杀杀安心家 -->
 	<scroll-view class="disinfestation" scroll-y>
-		<image class="disinfestation-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1606976014809/appointment-bg.png"
+		<image class="disinfestation-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1608456169217/appointment-bg.png"
 		 mode="widthFix"></image>
 		<view class="disinfestation-button" @click="goAppointment"></view>
 	</scroll-view>
@@ -26,7 +26,6 @@
 		position: relative;
 		overflow: scroll;
 		font-size: 0;
-		background-color: rgb(234, 234, 234);
 		-webkit-overflow-scrolling: touch;
 	}
 

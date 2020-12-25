@@ -7882,9 +7882,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/pages.json ***!
-  \************************************************************/
+/*!***************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8887,9 +8887,9 @@ module.exports = JSON.parse("{\"_from\":\"@dcloudio/uni-stat@next\",\"_id\":\"@d
 
 /***/ }),
 /* 7 */
-/*!****************************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/pages.json?{"type":"stat"} ***!
-  \****************************************************************************/
+/*!*******************************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json?{"type":"stat"} ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8898,14 +8898,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 8 */
-/*!*****************************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/pages.json?{"type":"style"} ***!
-  \*****************************************************************************/
+/*!********************************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/pages.json?{"type":"style"} ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "虫杀杀" }, "pages/self/self": { "navigationBarTitleText": "我的", "enablePullDownRefresh": false }, "pages/order/order": { "navigationBarTitleText": "订单", "enablePullDownRefresh": false }, "pages/appointment/appointment": { "navigationBarTitleText": "预约", "enablePullDownRefresh": false }, "pages/explain/explain": { "navigationBarTitleText": "费用说明", "enablePullDownRefresh": false }, "pages/projects/projects": { "navigationBarTitleText": "主营项目", "enablePullDownRefresh": false }, "pages/disinfestation/disinfestation": { "navigationBarTitleText": "", "enablePullDownRefresh": false }, "pages/neighbor/neighbor": { "navigationBarTitleText": "邻居计划", "enablePullDownRefresh": false }, "pages/detail/detail": { "navigationBarTitleText": "", "enablePullDownRefresh": false } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "虫杀杀", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "虫杀杀", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/self/self": { "navigationBarTitleText": "我的", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/order/order": { "navigationBarTitleText": "订单", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/appointment/appointment": { "navigationBarTitleText": "预约", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/explain/explain": { "navigationBarTitleText": "费用说明", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/projects/projects": { "navigationBarTitleText": "主营项目", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/disinfestation/disinfestation": { "navigationBarTitleText": "", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/neighbor/neighbor": { "navigationBarTitleText": "邻居计划", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/detail/detail": { "navigationBarTitleText": "", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/weekdayDiscount/weekdayDiscount": { "navigationBarTitleText": "", "enablePullDownRefresh": false, "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "虫杀杀", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#e5e5e5" } };exports.default = _default;
 
 /***/ }),
 /* 9 */,
@@ -9042,9 +9042,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 15 */
-/*!****************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/store/index.js ***!
-  \****************************************************************/
+/*!*******************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/store/index.js ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9055,16 +9055,29 @@ _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
   state: {
     // init:false
-    init: true },
+    init: true,
+    detail: {} },
 
   mutations: {
     changeInitState: function changeInitState(state) {
       state.init = true;
+    },
+    changeDetailData: function changeDetailData(state, payload) {
+      state.detail = payload;
+    },
+    clearDetail: function clearDetail(state) {
+      state.detail = {};
     } },
 
   actions: {
     changeInit: function changeInit() {
       store.commit('changeInitState');
+    },
+    changeDetail: function changeDetail(data, payload) {
+      store.commit("changeDetailData", payload);
+    },
+    clearDetail: function clearDetail() {
+      store.commit("clearDetail");
     } } });var _default =
 
 
@@ -10198,9 +10211,9 @@ var index = {
 /* 29 */,
 /* 30 */,
 /* 31 */
-/*!******************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/common/config.js ***!
-  \******************************************************************/
+/*!*********************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/common/config.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10222,9 +10235,9 @@ url_config;exports.default = _default;
 /* 36 */,
 /* 37 */,
 /* 38 */
-/*!*******************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/static/cancel.png ***!
-  \*******************************************************************/
+/*!**********************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/static/cancel.png ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10234,9 +10247,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 /* 39 */,
 /* 40 */,
 /* 41 */
-/*!*********************************************************************************!*\
-  !*** /Users/apple/Documents/zyCode/PestControl/node_modules/dayjs/dayjs.min.js ***!
-  \*********************************************************************************/
+/*!************************************************************************************!*\
+  !*** /Users/admin/Documents/zy/zyTest/PestControl/node_modules/dayjs/dayjs.min.js ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

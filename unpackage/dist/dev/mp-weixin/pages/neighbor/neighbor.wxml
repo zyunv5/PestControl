@@ -1,1 +1,1 @@
-<scroll-view class="neighbor" scroll-y="{{true}}"><image class="neighbor-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1606880187859/neighbor.png" mode="widthFix"></image></scroll-view>
+<scroll-view class="neighbor" scroll-y="{{true}}"><image class="neighbor-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1608454978834/neighbor.png" mode="widthFix"></image></scroll-view>

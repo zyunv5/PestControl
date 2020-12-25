@@ -1,0 +1,1 @@
+<view class="data-v-0d16dc1a"><scroll-view class="weekday data-v-0d16dc1a" scroll-y="{{true}}"><image class="weekday-bg data-v-0d16dc1a" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1608555853628/weekdayDiscount.png" mode="widthFix"></image></scroll-view></view>

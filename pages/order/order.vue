@@ -9,7 +9,7 @@
 				<span class="list-title">安心家服务</span>
 				<span class="list-time">下单时间:{{item.createdAt}}</span>
 				<span class="list-time">安心家服务:{{item.visitedAt}}</span>
-				<img class="list-img" src="../../static/cancel.png" alt="" mode="widthFix" @click.stop="cancelOrder(item.id)">
+				<img class="list-img" src="../../static/cancel.png" alt="" mode="widthFix" @click.stop="cancelOrder(item)">
 			</view>
 			<image class="content-img" src="../../static/list-bottom.png" mode="widthFix"></image>
 		</scroll-view>
@@ -58,8 +58,9 @@
 					url: `../detail/detail?item=${newItem}`
 				})
 			},
-			cancelOrder(id) {
-				wx.showModal({
+			cancelOrder(item) {
+				let that=this;
+				uni.showModal({
 					content: '您确定要取消订单吗？',
 					success(res) {
 						if (res.confirm) {
@@ -69,17 +70,16 @@
 								method: "POST",
 								data: {
 									token: token,
-									orderId:id
+									orderId:item.id
 								},
 								header: {
 									'content-type': 'application/json'
 								},
 								dataType: 'json',
 								success: (res) => {
-									console.log(res);
+									that.listData.splice(item,1);
 								}
 							});
-							console.log(id)
 						} else if (res.cancel) {
 							console.log('用户点击取消')
 						}
@@ -102,7 +102,7 @@
 	.order {
 		width: 100%;
 		height: 100%;
-		background-color: rgb(234, 234, 234);
+		/* background-color: rgb(234, 234, 234); */
 		box-sizing: border-box;
 		padding-top: 85rpx;
 	}

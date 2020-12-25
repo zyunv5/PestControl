@@ -3,7 +3,6 @@
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	width: 100%;
-	background-color: rgb(234, 234, 234);
 	padding: 20rpx 4% 0 4%;
 }
 .apponitment-title {
@@ -42,11 +41,12 @@
 	-webkit-border-radius: 10rpx;
 	        border-radius: 10rpx;
 	padding-left: 30rpx;
-	font-size: 25rpx;
+	font-size: 28rpx;
 	margin: 0 auto;
 }
-.form-list .picker {
+.form-list .pickerArea {
 	line-height: 78rpx;
+	color: #e5e5e5;
 }
 .form-textarea {
 	-webkit-box-sizing: border-box;
@@ -58,7 +58,7 @@
 	        border-radius: 10rpx;
 	padding-top: 20rpx;
 	padding-left: 30rpx;
-	font-size: 25rpx;
+	font-size: 28rpx;
 	margin: 0 auto;
 }
 .apponitment-title-time {
@@ -98,8 +98,8 @@
 	top: 50%;
 	-webkit-transform: translate(0, -50%);
 	        transform: translate(0, -50%);
-	width: 30rpx;
-	height: 20rpx;
+	width: 25rpx;
+	height: 15rpx;
 }
 .time-year {
 	width: 258rpx;
@@ -159,6 +159,11 @@
 	color: #fff;
 	border: 1rpx solid rgb(255, 101, 16);
 }
+.day-item-full {
+	background-color: rgb(226, 226, 226);
+	color: #fff;
+	border: 1rpx solid rgb(192, 192, 192);
+}
 .apponitment-submit {
 	width: 675rpx;
 	height: 96rpx;
@@ -170,10 +175,7 @@
 	        border-radius: 10rpx;
 	margin: 0 auto 20rpx;
 }
-.picker {
-	color: #999999;
-}
-.text-active {
+.form-list .text-active {
 	color: #000;
 }
 

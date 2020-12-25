@@ -57,12 +57,21 @@
 			}
 
 		}
-	],
+	    ,{
+            "path" : "pages/weekdayDiscount/weekdayDiscount",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "虫杀杀",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#e5e5e5"
 	},
 	"tabBar": {
 		"color": "#7A7E83",
@@ -85,13 +94,13 @@
 			"iconPath": "static/meBefore.png",
 			"selectedIconPath": "static/meAfter.png"
 		}]
+	},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "appointment", //模式名称
+			"path": "pages/appointment/appointment", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
 	}
-	// "condition": { //模式配置，仅开发期间生效
-	// 	"current": 0, //当前激活的模式(list 的索引项)
-	// 	"list": [{
-	// 		"name": "appointment", //模式名称
-	// 		"path": "pages/appointment/appointment", //启动页面，必选
-	// 		"query": "" //启动参数，在页面的onLoad函数里面得到
-	// 	}]
-	// }
 }
