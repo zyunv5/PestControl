@@ -3,13 +3,12 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
-			// init:false
-			init:true,
+			init:false,
 			detail:{}
 		},
     mutations: {
-			changeInitState(state){
-				state.init=true
+			changeInitState(state,payload){
+				state.init=payload
 			},
 			changeDetailData(state,payload){
 				state.detail=payload;
@@ -19,8 +18,8 @@ const store = new Vuex.Store({
 			}
 		},
     actions: {
-			changeInit(){
-				store.commit('changeInitState')
+			changeInit(data,payload){
+				store.commit('changeInitState',payload)
 			},
 			changeDetail(data,payload){
 				store.commit("changeDetailData",payload)

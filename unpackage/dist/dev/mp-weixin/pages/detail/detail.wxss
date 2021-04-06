@@ -1,7 +1,6 @@
 
 .detail {
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	width: 100%;
 	height: auto;
 	/* background-color: rgb(234, 234, 234); */
@@ -24,15 +23,13 @@
 	margin-bottom: 41rpx;
 }
 .form-list {
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	width: 700rpx;
 	height: 78rpx;
 	line-height: 78rpx;
 	margin-bottom: 20rpx;
 	background-color: #ffffff;
-	-webkit-border-radius: 10rpx;
-	        border-radius: 10rpx;
+	border-radius: 10rpx;
 	padding-left: 35rpx;
 	color: #aaaaaa;
 }
@@ -51,8 +48,7 @@
 	height: 78rpx;
 	line-height: 78rpx;
 	background-color: #ffffff;
-	-webkit-border-radius: 10rpx;
-	        border-radius: 10rpx;
+	border-radius: 10rpx;
 	margin-bottom: 60rpx;
 	padding-left: 35rpx;
 	color: #aaaaaa;
@@ -60,6 +56,7 @@
 .detail-motify {
 	width: 695rpx;
 	height: 98rpx;
+	line-height: 98rpx;
 	margin-bottom: 21rpx;
 	background-color: rgb(21, 23, 44);
 	color: #ffffff;
@@ -67,6 +64,7 @@
 .detail-cancel {
 	width: 695rpx;
 	height: 98rpx;
+	line-height: 98rpx;
 	margin-bottom: 21rpx;
 	background-color: rgb(255, 78, 0);
 	color: #ffffff;

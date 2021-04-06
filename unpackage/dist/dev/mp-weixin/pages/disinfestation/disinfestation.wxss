@@ -11,9 +11,22 @@
 	width: 100%;
 	height: auto;
 }
+.explain-person.data-v-49e73486{
+	position: absolute;
+	width: 680rpx;
+	height: 657rpx;
+	top:20rpx;
+	left:0;
+	right: 0;
+	margin: 0 auto;
+}
+.explain-person image.data-v-49e73486{
+	width: 680rpx;
+	height: 657rpx;
+}
 .disinfestation-button.data-v-49e73486 {
 	position: absolute;
-	top: 3550rpx;
+	top: 5350rpx;
 	width: 100%;
 	height: 100rpx;
 	font-size: 0;

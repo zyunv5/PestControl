@@ -69,7 +69,7 @@ export default {
 							},
 							dataType: 'json',
 							success: res => {
-								uni.navigateTo({
+								uni.redirectTo({
 									url: '../order/order'
 								});
 							}
@@ -155,6 +155,7 @@ export default {
 .detail-motify {
 	width: 695rpx;
 	height: 98rpx;
+	line-height: 98rpx;
 	margin-bottom: 21rpx;
 	background-color: rgb(21, 23, 44);
 	color: #ffffff;
@@ -163,6 +164,7 @@ export default {
 .detail-cancel {
 	width: 695rpx;
 	height: 98rpx;
+	line-height: 98rpx;
 	margin-bottom: 21rpx;
 	background-color: rgb(255, 78, 0);
 	color: #ffffff;

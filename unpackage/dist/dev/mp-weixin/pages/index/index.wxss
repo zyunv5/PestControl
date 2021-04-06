@@ -28,7 +28,7 @@
 	width: 92%;
 	height: auto;
 	margin: 0 auto;
-	top: 318rpx;
+	top: 327rpx;
 	left: 0;
 	right: 0;
 	display: -webkit-box;
@@ -51,15 +51,53 @@
 }
 .content-swiper {
 	position: absolute;
-	top: 559rpx;
+	top: 565rpx;
 	left: 0;
 	right: 0;
 	margin: 0 auto;
 	width: 692rpx;
-	height: 395rpx;
+	/* height: 395rpx; */
+	height: 455rpx;
 }
 .swiper-item image {
 	width: 692rpx;
-	height: 395rpx;
+	height: 455rpx;
+}
+.content-person {
+	width: 699rpx;
+	height: 588rpx;
+	position: absolute;
+	top: 990rpx;
+	left: 30rpx;
+}
+.content-person image {
+	width: 699rpx;
+	height: 588rpx;
+}
+.bannerDots {
+	width: 155rpx;
+}
+.dot {
+	width: 28rpx;
+	height: 8rpx;
+	margin: 0 1px;
+	border-radius: 2px;
+	background-color: rgb(193, 193, 193);
+}
+.dot.active {
+	background-color: #fff;
+}
+.abs {
+	position: absolute;
+	top: 910rpx;
+	left: 30rpx;
+}
+.flex_c {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
 }
 

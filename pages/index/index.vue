@@ -1,64 +1,66 @@
 <template>
 	<!-- 首页 -->
 	<view class="index">
-		<view class="content-init" v-show="!initState">
+		<view class="content-init" v-show="isLoading">
 			<image src="https://statich.yidianzixun.com/public/file/1606285599416/init.jpg" alt="" mode="scaleToFill">
 		</view>
-		<scroll-view class="content" v-show="initState" scroll-y>
-			<image class="content-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1608456013258/index.png"
+		<scroll-view class="content" v-show="!isLoading" scroll-y>
+			<image class="content-bg" lazy-load="true" src="https://statich.yidianzixun.com/public/file/1611285729952/index.png"
 			 mode="widthFix"></image>
 			<view class="content-list">
 				<image @click="goAppointment" src="https://statich.yidianzixun.com/public/file/1606286771148/p1.png" mode="widthFix"></image>
 				<image @click="goExplain" src="https://statich.yidianzixun.com/public/file/1606286771148/p2.png" mode="widthFix"></image>
 				<image @click="goProjects" src="https://statich.yidianzixun.com/public/file/1606286771148/p3.png" mode="widthFix"></image>
 			</view>
-			<swiper class="content-swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="500">
-				<swiper-item>
-					<view class="swiper-item" @click="goNeightbor">
-						<image src="https://statich.yidianzixun.com/public/file/1605754071093/swiper1.png" mode="widthFix"></image>
-					</view>
-				</swiper-item>
-				<swiper-item>
-					<view class="swiper-item" @click="goWeekday">
-						<image src="https://statich.yidianzixun.com/public/file/1608555853628/swiper2.png" mode="widthFix"></image>
+			<swiper class="content-swiper" :autoplay="true" :interval="3000" :duration="500" @change="changSwiper">
+				<swiper-item v-for="item in bannerData" :key="item.id">
+					<view class="swiper-item" @click="goRouter(item.id)">
+						<image :src="item.src" mode="widthFix"></image>
 					</view>
 				</swiper-item>
 			</swiper>
+			<view class="bannerDots flex_c abs">
+				<view v-for="item in bannerData" :key="item.id" class="dot" :class="[currentIndex==item.id?'active':'']"></view>
+			</view>
+			<view class="content-person">
+				<image src="https://statich.yidianzixun.com/public/file/1609000827582/index-person.PNG" lazy-load="true" mode="widthFix"></image>
+			</view>
 		</scroll-view>
 	</view>
-
 </template>
 
 <script>
 	export default {
+		data() {
+			return {
+				isLoading: true,
+				bannerData: [{
+						src: 'https://statich.yidianzixun.com/public/file/1605754071093/swiper1.png',
+						id: 0
+					},
+					{
+						src: 'https://statich.yidianzixun.com/public/file/1608555853628/swiper2.png',
+						id: 1
+					},
+				],
+				currentIndex: 0,
+			}
+		},
 		onLoad() {
-			// uni.hideTabBar()
+			uni.hideTabBar();
+			setTimeout(() => {
+				this.isLoading = false;
+				// this.$store.dispatch('changeInit',true);
+				uni.showTabBar()
+			}, 3000)
 		},
 		computed: {
 			initState() {
 				return this.$store.state.init
 			}
 		},
-		beforeCreate() {
-			if (!this.$store.state.init) {
-				setTimeout(() => {
-					this.$store.dispatch('changeInit');
-					uni.showTabBar()
-				}, 3000)
-			} else {
-				uni.showTabBar()
-			}
-		},
-		mounted() {
-			// console.log(this.initState)
-			// uni.request({
-			//     url: 'https://api.heimancc.com/art', //仅为示例，并非真实接口地址。
-			//     success: (res) => {
-			//         console.log(res.data);
-			//         this.text = 'request success';
-			//     }
-			// });
-		},
+		beforeCreate() {},
+		mounted() {},
 		methods: {
 			goAppointment() {
 				uni.switchTab({
@@ -75,15 +77,20 @@
 					url: "../projects/projects"
 				})
 			},
-			goNeightbor() {
-				uni.navigateTo({
-					url: "../neighbor/neighbor"
-				})
+			goRouter(id) {
+				if (id === 0) {
+					uni.navigateTo({
+						url: "../neighbor/neighbor"
+					})
+				} else if (id === 1) {
+					uni.navigateTo({
+						url: "../weekdayDiscount/weekdayDiscount"
+					})
+				}
 			},
-			goWeekday(){
-				uni.navigateTo({
-					url: "../weekdayDiscount/weekdayDiscount"
-				})
+			changSwiper(e) {
+				let current = e.detail.current
+				this.currentIndex = current
 			}
 		}
 	}
@@ -124,7 +131,7 @@
 		width: 92%;
 		height: auto;
 		margin: 0 auto;
-		top: 318rpx;
+		top: 327rpx;
 		left: 0;
 		right: 0;
 		display: flex;
@@ -140,16 +147,58 @@
 
 	.content-swiper {
 		position: absolute;
-		top: 559rpx;
+		top: 565rpx;
 		left: 0;
 		right: 0;
 		margin: 0 auto;
 		width: 692rpx;
-		height: 395rpx;
+		/* height: 395rpx; */
+		height: 455rpx;
 	}
+
 
 	.swiper-item image {
 		width: 692rpx;
-		height: 395rpx;
+		height: 455rpx;
+	}
+
+	.content-person {
+		width: 699rpx;
+		height: 588rpx;
+		position: absolute;
+		top: 990rpx;
+		left: 30rpx;
+	}
+
+	.content-person image {
+		width: 699rpx;
+		height: 588rpx;
+	}
+
+	.bannerDots {
+		width: 155rpx;
+	}
+
+	.dot {
+		width: 28rpx;
+		height: 8rpx;
+		margin: 0 1px;
+		border-radius: 2px;
+		background-color: rgb(193, 193, 193);
+	}
+
+	.dot.active {
+		background-color: #fff;
+	}
+
+	.abs {
+		position: absolute;
+		top: 910rpx;
+		left: 30rpx;
+	}
+
+	.flex_c {
+		display: flex;
+		justify-content: center;
 	}
 </style>

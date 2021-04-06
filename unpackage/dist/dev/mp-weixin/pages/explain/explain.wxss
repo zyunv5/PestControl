@@ -4,10 +4,8 @@
 	height: auto;
 	position: relative;
 	font-size: 0;
-	/* background-color: rgb(234, 234, 234); */
 	padding: 20rpx 4% 20rpx 4%;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 }
 .explain-logo {
 	width: 214rpx;
@@ -26,8 +24,7 @@
 	width: 653rpx;
 	height: 80rpx;
 	background-color: rgb(21, 23, 44);
-	-webkit-border-radius: 10rpx;
-	        border-radius: 10rpx;
+	border-radius: 10rpx;
 	color:#fff;
 }
 

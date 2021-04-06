@@ -4,8 +4,7 @@
 	padding-top: 30rpx;
 }
 .project-list.data-v-101bc074 {
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	width: 92%;
 	margin: 0 auto;
 	display: -webkit-box;
@@ -27,8 +26,7 @@
 	height: 95rpx;
 	line-height: 95rpx;
 	background-color: #ffffff;
-	-webkit-border-radius: 10rpx;
-	        border-radius: 10rpx;
+	border-radius: 10rpx;
 	text-align: center;
 }
 .project-list image.data-v-101bc074:nth-child(1) {

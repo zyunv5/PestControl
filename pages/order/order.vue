@@ -14,10 +14,10 @@
 			<image class="content-img" src="../../static/list-bottom.png" mode="widthFix"></image>
 		</scroll-view>
 		<scroll-view scroll-y="true" class="order-content" v-if="isActive===1">
-			<view class="content-list">
+			<view class="content-list" v-for="item in finishData" :key="item.id">
 				<span class="list-title">安心家服务</span>
-				<span class="list-time">下单时间:2020/11/5 15:32</span>
-				<span class="list-time">安心家服务:2020/11/6 15:00</span>
+				<span class="list-time">下单时间:{{item.createdAt}}</span>
+				<span class="list-time">安心家服务:{{item.visitedAt}}</span>
 			</view>
 			<image class="content-img" src="../../static/list-bottom.png" mode="widthFix"></image>
 		</scroll-view>
@@ -31,10 +31,11 @@
 		data() {
 			return {
 				isActive: 0,
-				listData: []
+				listData: [],
+				finishData: []
 			}
 		},
-		created() {
+		onShow() {
 			let that = this;
 			const token = wx.getStorageSync("token")
 			uni.request({
@@ -48,18 +49,19 @@
 				}
 			});
 		},
+		created() {},
 		methods: {
 			changeTab(num) {
 				this.isActive = num
 			},
 			seeDetail(item) {
-				const newItem=JSON.stringify(item)
+				const newItem = JSON.stringify(item)
 				uni.navigateTo({
 					url: `../detail/detail?item=${newItem}`
 				})
 			},
 			cancelOrder(item) {
-				let that=this;
+				let that = this;
 				uni.showModal({
 					content: '您确定要取消订单吗？',
 					success(res) {
@@ -70,14 +72,14 @@
 								method: "POST",
 								data: {
 									token: token,
-									orderId:item.id
+									orderId: item.id
 								},
 								header: {
 									'content-type': 'application/json'
 								},
 								dataType: 'json',
 								success: (res) => {
-									that.listData.splice(item,1);
+									that.listData.splice(item, 1);
 								}
 							});
 						} else if (res.cancel) {
@@ -87,12 +89,15 @@
 				})
 			},
 			orderSort(data) {
+				let listArrat = [],
+					finishArray = [];
 				const newData = data.map(item => {
 					item.createdAt = dayjs(item.createdAt).format("YYYY-MM-DD HH:mm:ss")
 					item.visitedAt = dayjs(item.visitedAt).format("YYYY-MM-DD HH:mm:ss")
-					return item;
+					item.orderStatus == 0 ? listArrat.push(item) : finishArray.push(item);
 				})
-				this.listData = newData
+				this.listData = listArrat
+				this.finishData = finishArray
 			}
 		}
 	}

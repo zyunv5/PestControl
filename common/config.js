@@ -5,7 +5,7 @@ if(process.env.NODE_ENV === 'development'){
     url_config = 'http://localhost:7001/'
 }else{
     // 生产环境
-    url_config = ''
+    url_config = 'https://css.heimancc.com/'
 }
 
 export default url_config

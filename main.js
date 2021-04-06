@@ -1,3 +1,4 @@
+import './utils/mtj-wx-sdk';
 import Vue from 'vue'
 import App from './App'
 //引入vuex

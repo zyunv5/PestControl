@@ -3,6 +3,7 @@
 	<view class="self">
 		<view class="self-header">
 			<view class="header-avatar">
+				<button v-if="isLogin" class="avatar-login" open-type="getUserInfo" @getuserinfo='getUserInfo'></button>
 				<image class="avatar-img" :src="userAvatar" mode="scaleToFill"></image>
 			</view>
 			<view class="header-user">
@@ -12,23 +13,25 @@
 		<view class="self-bar"></view>
 		<view class="self-bottom">
 			<view @click="goOrder" class="bottom-list">
+				<button v-if="isLogin" class="list-login" open-type="getUserInfo" @getuserinfo='getUserInfo'></button>
 				<view class="order-icon">
 					<image src="../../static/i1.png" mode="widthFix"></image>
 				</view>
 				<view>我的订单</view>
 			</view>
-			<!-- <view class="bottom-list">
+			<view @click="phoneService" class="bottom-list">
+				<button v-if="isLogin" class="list-login" open-type="getUserInfo" @getuserinfo='getUserInfo'></button>
 				<view class="customer-icon">
 					<image src="../../static/i2.png" mode="widthFix"></image>
 				</view>
 				<view>联系客服</view>
-			</view> -->
-			<!-- <view class="bottom-list">
+			</view>
+			<view @click="seeOther" class="bottom-list">
 				<view class="question-icon">
 					<image src="../../static/i3.png" mode="widthFix"></image>
 				</view>
-				<view>常见问题</view>
-			</view> -->
+				<view>大众美团&下单</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -38,30 +41,50 @@
 		data() {
 			return {
 				userName: '登录|注册',
-				userAvatar: "../../static/icon.png"
+				userAvatar: "../../static/icon.png",
+				isLogin: true
 			}
 		},
 		created() {
+
+		},
+		onShow() {
 			const nameStorage = wx.getStorageSync('userName');
 			const avatarStorage = wx.getStorageSync('userAvatar');
 			if (nameStorage && avatarStorage) {
 				this.userName = nameStorage
 				this.userAvatar = avatarStorage
+				this.isLogin = false
 			}
 		},
 		methods: {
 			goOrder() {
 				const token = wx.getStorageSync("token")
-				if (!token) {
-					uni.showToast({
-						title: "请先登录",
-						icon: "none"
-					})
-				} else {
+				if (token) {
 					uni.navigateTo({
 						url: "../order/order"
 					})
 				}
+			},
+			phoneService() {
+				const token = wx.getStorageSync("token")
+				if (token) {
+					uni.makePhoneCall({
+						phoneNumber: '13001057986'
+					})
+				}
+			},
+			seeOther() {
+				uni.showModal({
+					content: '美团或大众点评搜索虫杀杀也可下单',
+					success(res) {
+						if (res.confirm) {
+							console.log('用户点击确定')
+						} else if (res.cancel) {
+							console.log('用户点击取消')
+						}
+					}
+				})
 			},
 			getUserInfo() {
 				let that = this
@@ -76,14 +99,15 @@
 							success(res) {
 								if (res.code) {
 									uni.request({
-										url: urlConfig+'getOpenId',
+										url: urlConfig + 'getOpenId',
 										method: "POST",
 										data: {
 											code: res.code,
-											name:userInfo.nickName
+											name: userInfo.nickName
 										},
 										success: (res) => {
 											wx.setStorageSync('token', res.data.sig)
+											that.isLogin = false
 										}
 									});
 								} else {
@@ -122,6 +146,20 @@
 	.header-avatar {
 		width: 150rpx;
 		height: 150rpx;
+	}
+
+	.avatar-login {
+		position: absolute;
+		z-index: 5;
+		width: 150rpx;
+		height: 150rpx;
+		border-radius: 50%;
+		background-color: transparent;
+		border: none;
+	}
+
+	.avatar-login::after {
+		border: none;
 	}
 
 	.avatar-img {
@@ -179,6 +217,18 @@
 		align-items: center;
 		box-sizing: border-box;
 		padding-left: 40rpx;
+	}
+
+	.list-login {
+		position: absolute;
+		z-index: 5;
+		width: 500rpx;
+		height: 116rpx;
+		background-color: transparent;
+	}
+
+	.list-login::after {
+		border: none;
 	}
 
 	.order-icon,

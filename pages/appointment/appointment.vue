@@ -3,13 +3,14 @@
 		<image class="apponitment-title" src="../../static/appointment-title.png" mode="aspectFit"></image>
 		<image class="apponitment-title-form" src="../../static/form_info.png" mode="widthFix"></image>
 		<view class="apponitment-form">
+			<button class="form-login" v-if="isLogin" open-type="getUserInfo" @getuserinfo='getUserInfo'></button>
 			<input class="form-list" placeholder-style="color:#e5e5e5;" type="text" placeholder="请填写您的姓名" v-model="user" />
 			<input class="form-list" placeholder-style="color:#e5e5e5;" type="text" placeholder="请填写您的联系方式" v-model="phone" />
 			<picker class="form-list" mode="selector" :value="area" :range="bgMap" @change="areaChange">
 				<view class="pickerArea" :class="[areaColor ? 'text-active' : '']">{{ area }}</view>
 			</picker>
 			<textarea class="form-textarea" placeholder-style="color:#e5e5e5;" placeholder="请填写详细的楼号、楼层、门牌号等信息" v-model="address" />
-		</view>
+			</view>
 		<image class="apponitment-title-time" src="../../static/appointment_time.png" mode="widthFix"></image>
 		<view class="apponitment-time">
 			<view class="time-list time-year">
@@ -20,13 +21,13 @@
 			</view>
 			<view class="time-list">
 				<picker mode="selector" :value="month" :range="months" @change="monthChange($event)">
-					<view class="picker">{{ month + 1 }}月</view>
+					<view class="picker">{{ month+1 }}月</view>
 					<image class="time-list-icon" src="../../static/select_icon.png" mode="widthFix"></image>
 				</picker>
 			</view>
 			<view class="time-list">
 				<picker mode="selector" :value="day" :range="days" @change="dayChange($event)">
-					<view class="picker">{{ day + 1 }}日</view>
+					<view class="picker">{{ day+1 }}日</view>
 					<image class="time-list-icon" src="../../static/select_icon.png" mode="widthFix"></image>
 				</picker>
 			</view>
@@ -50,26 +51,16 @@ export default {
 		const date = new Date();
 		const years = [];
 		const year = date.getFullYear();
-		const months = [];
-		const month = date.getMonth();
-		const days = [];
-		const day = date.getDate() - 1;
 		for (let i = year; i <= date.getFullYear() + 10; i++) {
 			years.push(i);
 		}
-		for (let i = 1; i <= 12; i++) {
-			months.push(i);
-		}
-		for (let i = 1; i <= 31; i++) {
-			days.push(i);
-		}
 		return {
-			year,
+			year,//当前年份
 			years,
-			month,
-			months,
-			day,
-			days,
+			month:null,
+			months:[],
+			day:null,
+			days:[],
 			dayTime: [
 				{ noon: '上午', time: '09:00', active: false, isFull: false },
 				{ noon: '上午', time: '11:00', active: false, isFull: false },
@@ -79,23 +70,24 @@ export default {
 				{ noon: '下午', time: '19:00', active: false, isFull: false },
 				{ noon: '下午', time: '21:00', active: false, isFull: false }
 			],
-			area: '选择您所在地区',
-			// bgMap: ['东城区', '西城区', '朝阳区', '丰台区', '石景山区', '海淀区', '门头沟区', '房山区', '通州区', '顺义区', '昌平区', '大兴区', '平谷区', '怀柔区', '密云县', '延庆县'],
-			bgMap: ['朝阳区', '海淀区'],
+			area: '选择您所在区域',
+			bgMap: ["东城区","西城区",'朝阳区', '海淀区',"丰台区","石景山区","通州区","昌平区"],
 			areaColor: false,
 			user: '',
 			phone: '',
 			address: '',
-			id: ''
+			id: '',
+			isLogin:true//是否登录
 		};
 	},
 	computed: {
-		detail() {
+		detail() {//是否是修改订单
 			let state = this.$store.state.detail;
 			return state;
 		}
 	},
 	onShow() {
+		//查看是否登录
 		const token = wx.getStorageSync('token');
 		if (!token) {
 			uni.showToast({
@@ -104,14 +96,20 @@ export default {
 				duration: 3000
 			});
 		}
+		//初始化当前时间
+		this.setCurrentTime()
+		
+		//查询预约情况
+		let nextDay = dayjs().add(1, 'day');
+		this.getNextDay(nextDay);
+		
+		//修改订单选项
 		if (JSON.stringify(this.detail) !== '{}') {
 			const queryItem = JSON.parse(this.detail);
 			const date=dayjs(queryItem.time)
-			console.log(queryItem)
 			this.year=date.year()
 			this.month=date.month()
 			this.day=date.date()-1
-			console.log(date.year(),date.month(),date.date())
 			this.dayTime.filter(item=>{
 				if(item.time===`${date.hour()}:00`){
 					item.active=true
@@ -125,46 +123,58 @@ export default {
 			this.area = queryItem.area;
 		}
 	},
-	created(){},
-	onHide() {
-		this.$store.dispatch('clearDetail');
-		this.resetForm()
-	},
 	methods: {
 		// 更改年份
-		yearChange(e) {
-			this.year = this.years[e.target.value];
-			const beforeYear = this.years[e.target.value];
+		yearChange(e,m) {
+			this.year =m?this.year+1:this.years[e.target.value];
+			const beforeYear =m?this.year+1:this.years[e.target.value];
 			const afterDay = dayjs(`${beforeYear}-${this.month + 1}`).daysInMonth();
-			this.dayOrigin(afterDay);
-			this.dayTime.forEach(item => (item.active = false));
+			this.dayOrigin(afterDay,this.month + 1);
+			const addDay= dayjs(`${this.year}-${this.month + 1}-${this.day+1}`)
+			e===""?"":this.getNextDay(addDay)
 		},
 		// 更改月份 e是手动操作 m是后一天修改
 		monthChange(e, m) {
 			this.month = m ? m - 1 : this.months[e.target.value] - 1;
 			let beforeMonth = m ? m : this.months[e.target.value];
 			const afterDay = dayjs(`${this.year}-${beforeMonth}`).daysInMonth();
-			this.dayOrigin(afterDay);
-			this.dayTime.forEach(item => (item.active = false));
+			this.dayOrigin(afterDay,beforeMonth);//更改天数
+			const addDay= dayjs(`${this.year}-${this.month + 1}-${this.day+1}`)
+			e===""?"":this.getNextDay(addDay)
 		},
 		//更改不同月份天数
-		dayOrigin(days) {
+		dayOrigin(days,mon) {
 			let dayAfter = this.day,
-				dayBefore = this.days;
-			let dayArray = [];
-			for (let i = 1; i <= days; i++) {
-				dayArray.push(i);
-			}
-			this.days = dayArray;
-			//判断是不是31号切换到30号
-			if (dayAfter == '30') {
-				this.day = this.days[this.days.length - 1] - 1;
+				dayBefore = this.days,
+				dayArray = [],
+				currentMonth=dayjs().month()+1,
+				currentDay=dayjs().date(),
+				currentDays=dayjs().daysInMonth();
+				console.log(dayAfter,currentDay,currentDays)
+			if(mon===currentMonth){
+				for(let i=currentDay;i<=currentDays;i++){
+					dayArray.push(i);
+				}
+				if(dayAfter<currentDay){
+					this.day=currentDay-1
+				}
+				this.days = dayArray;
+			}else{
+				for (let i = 1; i <= days; i++) {
+					dayArray.push(i);
+				}
+				this.days = dayArray;
+				//判断是不是31号切换到30号
+				if (dayAfter == '30') {
+					this.day = this.days[this.days.length - 1] - 1;
+				}
 			}
 		},
-		// 更改日期
+		// 更改了日期
 		dayChange(e, d) {
 			this.day = d ? d - 1 : this.days[e.target.value] - 1;
-			this.dayTime.forEach(item => (item.active = false));
+			const addDay= dayjs(`${this.year}-${this.month + 1}-${this.day+1}`)
+			e===""?"":this.getNextDay(addDay)
 		},
 		// 更改区域
 		areaChange(val) {
@@ -192,17 +202,32 @@ export default {
 			let newYear = addDay.year();
 			let newMonth = addDay.month() + 1;
 			let newDay = addDay.date();
+			this.getNextDay(addDay);
+			if(month+1==12&&day==30){
+				this.yearChange('', 1);
+			}
 			this.monthChange('', newMonth);
 			this.dayChange('', newDay);
-			console.log(addDay.format("YYYY-MM-DD"))
+			
+		},
+		getNextDay(addDay){
+			let that=this;
 			uni.request({
 				url: urlConfig + 'getTime',
 				method: 'GET',
+				data:{
+					time:addDay.format("YYYY-MM-DD")
+				},
 				header: {
 					'content-type': 'application/json'
 				},
 				success: res => {
-					console.log(res);
+					for(let i=0;i<7;i++){
+						if(res.data.data[i]>1){
+							that.dayTime[i].isFull=true
+						}
+						that.dayTime[i].active=false
+					}
 				}
 			})
 		},
@@ -215,8 +240,8 @@ export default {
 				this.alert('', '请填写用户姓名');
 			} else if (!/^1[3|4|5|6|7|8|9]\d{9}$/.test(this.phone)) {
 				this.alert('', '请填写正确的手机号');
-			} else if (this.area === '选择您所在社区') {
-				this.alert('', '请选择您所在社区');
+			} else if (this.area === '选择您所在区域') {
+				this.alert('', '请选择您所在区域');
 			} else if (!this.address) {
 				this.alert('', '请填写您的详细地址');
 			} else if (timeActive.length === 0) {
@@ -232,6 +257,7 @@ export default {
 					time: `${this.year}-${m}-${d} ${timeActive[0].time}:00`
 				};
 				const token = wx.getStorageSync('token');
+				const username=wx.getStorageSync('userName')
 				if (!token) {
 					uni.showToast({
 						title: '请先登录再进行预约',
@@ -239,6 +265,7 @@ export default {
 						duration: 1500
 					});
 				} else {
+					uni.showLoading()
 					if(this.id){
 						form.id=this.id;
 						uni.request({
@@ -247,15 +274,11 @@ export default {
 							header: {
 								'content-type': 'application/json'
 							},
-							data: { token: token, form: form },
+							data: { token: token,username:username,form: form },
 							dataType: 'json',
 							success: res => {
-								console.log(res);
 								if (res.data.status === 1) {
-									uni.showToast({
-										title: '添加成功',
-										icon: 'success'
-									});
+									uni.hideLoading()
 									uni.navigateTo({
 										url: '../order/order'
 									});
@@ -274,15 +297,11 @@ export default {
 							header: {
 								'content-type': 'application/json'
 							},
-							data: { token: token, form: form },
+							data: { token: token,username:username, form: form },
 							dataType: 'json',
 							success: res => {
-								console.log(res);
 								if (res.data.status === 1) {
-									uni.showToast({
-										title: '添加成功',
-										icon: 'success'
-									});
+									uni.hideLoading()
 									uni.navigateTo({
 										url: '../order/order'
 									});
@@ -328,17 +347,76 @@ export default {
 		resetForm() {
 			this.user = '';
 			this.phone = '';
-			this.area = '选择您所在社区';
+			this.area = '选择您所在区域';
 			this.areaColor = false;
 			this.address = '';
 			const date = new Date();
 			this.year = date.getFullYear();
-			this.month = date.getMonth();
-			this.day = date.getDate() - 1;
+			// this.month = date.getMonth();
+			// this.day = date.getDate();
 			this.dayTime.forEach(item => (item.active = false));
-		}
+			this.setCurrentTime()
+		},
+		//用户登录
+		getUserInfo() {
+			let that = this
+			wx.getUserInfo({
+				success(res) {
+					const userInfo = res.userInfo
+					that.userName = userInfo.nickName
+					that.userAvatar = userInfo.avatarUrl
+					wx.setStorageSync('userName', userInfo.nickName)
+					wx.setStorageSync('userAvatar', userInfo.avatarUrl)
+					wx.login({
+						success(res) {
+							if (res.code) {
+								uni.request({
+									url: urlConfig + 'getOpenId',
+									method: "POST",
+									data: {
+										code: res.code,
+										name: userInfo.nickName
+									},
+									success: (res) => {
+										wx.setStorageSync('token', res.data.sig)
+										that.isLogin = false
+									}
+								});
+							} else {
+								console.log('登录失败！' + res.errMsg)
+							}
+						}
+					})
+				},
+				fail(err) {
+					console.log("用户未授权")
+				}
+			})
+		},
+		//初始化当前时间
+		setCurrentTime(){
+			let currentDay=dayjs();//获取当前的日子
+			let day=currentDay.date(),
+			days=currentDay.daysInMonth(),
+			dayArr=[],
+			month=currentDay.month(),
+			monthArr=[];
+			for(let i=day;i<=days;i++){
+				dayArr.push(i)
+			}
+			for(let i=month+1;i<=12;i++){
+				monthArr.push(i)
+			}
+			this.day=day-1
+			this.days=dayArr
+			this.month=month
+			this.months=monthArr
+		},
+		onHide() {
+			this.$store.dispatch('clearDetail');
+			this.resetForm()
+		},
 	},
-	
 };
 </script>
 
@@ -368,6 +446,16 @@ export default {
 	justify-content: space-between;
 	margin-bottom: 35rpx;
 }
+.form-login{
+	position: absolute;
+	width: 685rpx;
+	height: 452rpx;
+	z-index:5;
+	background-color: transparent;
+}
+.form-login::after {
+		border: none;
+	}
 .form-list {
 	box-sizing: border-box;
 	width: 675rpx;
